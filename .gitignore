@@ -1,0 +1,10 @@
+# Cloudflare Wrangler local state
+.wrangler/
+
+# Dependencies (if any get added later)
+node_modules/
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
