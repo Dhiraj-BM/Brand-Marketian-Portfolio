@@ -1,734 +1,509 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-
 <!doctype html>
-<title>Brand Marketian — We Make Attention Perform</title>
+<html lang="en">
+<head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Marketian — Portfolio</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Instrument+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
 <style>
-  :root{
-    --ink:#0B0B0B;
-    --paper:#FAF8F4;
-    --orange:#FD6301;
-    --charcoal:#1B1B1B;
-    --grey:#A6A6A6;
-    --card:#ffffff;
-    --line:rgba(10,10,10,.12);
-    --line-dark:rgba(245,242,234,.14);
-    --r:6px;
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--paper);color:var(--ink);
-    font-family:"Inter",system-ui,sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%;display:block;}
-  h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;margin:0;letter-spacing:-.02em;}
-  a{color:inherit;}
-  .num{font-variant-numeric:tabular-nums;}
-  .wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px);}
-  .accent{color:var(--orange);}
-  .sec{padding-block:clamp(64px,10vw,120px);}
-  .sec--light{background:var(--paper);color:var(--ink);}
-  .sec--dark{background:var(--charcoal);color:var(--paper);}
-  .sec-head{max-width:66ch;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;
-    font-family:"Space Grotesk";font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--ink);opacity:.55;
-  }
-  .eyebrow--dark{color:var(--paper);opacity:.6;}
-  .sec-h2{font-size:clamp(30px,4.4vw,52px);font-weight:700;line-height:1.04;margin-top:16px;}
-
-  /* reveal + count-up */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i,0) * 90ms);}
-  .reveal.is-in{opacity:1;transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){ .reveal{transition:none;opacity:1;transform:none;} }
-
-  /* buttons */
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    font-family:"Space Grotesk";font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;
-    padding:15px 26px;border-radius:var(--r);text-decoration:none;white-space:nowrap;
-    transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
-  }
-  .btn .arrow{transition:transform .2s ease;}
-  .btn:hover .arrow{transform:translateX(5px);}
-  .btn-orange{background:var(--orange);color:var(--ink);border:1px solid var(--orange);}
-  .btn-orange:hover{background:transparent;color:var(--orange);}
-  .btn-outline{background:transparent;color:var(--paper);border:1px solid var(--line-dark);}
-  .btn-outline:hover{background:var(--orange);color:var(--ink);border-color:var(--orange);}
-  .btn-outline-ink{background:transparent;color:var(--ink);border:1px solid var(--line);}
-  .btn-outline-ink:hover{background:var(--ink);color:var(--orange);border-color:var(--ink);}
-
-  /* ---------- nav ---------- */
-  .nav{
-    position:sticky;top:0;z-index:50;background:rgba(10,10,10,.88);backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line-dark);
-  }
-  .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:20px;flex-wrap:wrap;}
-  .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-  .nav-brand img{height:34px;width:34px;flex:none;}
-  .nav-brand span{font-family:"Space Grotesk";font-weight:700;font-size:15px;color:var(--paper);letter-spacing:-.01em;}
-  .nav-links{display:flex;gap:28px;flex-wrap:wrap;}
-  .nav-links a{
-    font-family:"Space Grotesk";font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--grey);text-decoration:none;transition:color .2s ease;
-  }
-  .nav-links a:hover{color:var(--orange);}
-
-  /* ---------- hero ---------- */
-  .hero{position:relative;background:var(--ink);color:var(--paper);overflow:hidden;padding-block:clamp(72px,12vw,132px) clamp(120px,16vw,220px);}
-  .hero-inner{max-width:1240px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px);position:relative;z-index:2;}
-  .hero-kicker{
-    display:inline-flex;align-items:center;gap:10px;
-    font-family:"Space Grotesk";font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);
-  }
-  .hero-kicker::before{content:"";width:28px;height:1px;background:var(--orange);display:inline-block;}
-  .hero-h1{
-    margin-top:22px;font-size:clamp(52px,10.5vw,138px);line-height:.92;font-weight:700;
-    text-transform:uppercase;letter-spacing:-.03em;
-  }
-  .hero-h1 span{display:block;}
-  .hero-sub{
-    margin-top:26px;font-family:"Space Grotesk";font-size:clamp(15px,1.6vw,20px);font-weight:500;color:var(--grey);
-    letter-spacing:.01em;
-  }
-  .hero-actions{margin-top:38px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
-  .hero-note{font-size:12.5px;color:var(--grey);}
-
-  .float-cards{position:absolute;inset:0;z-index:1;pointer-events:none;}
-  .float-card{
-    position:absolute;pointer-events:auto;
-    background:var(--charcoal);border:1px solid var(--line-dark);border-radius:var(--r);
-    padding:14px 18px;min-width:150px;
-    will-change:transform;
-  }
-  .float-card .fc-v{display:block;font-family:"Space Grotesk";font-weight:700;font-size:24px;color:var(--orange);}
-  .float-card .fc-l{display:block;font-size:11px;color:var(--grey);margin-top:3px;letter-spacing:.02em;}
-  .fc1{top:6%;right:6%;transform:rotate(-3deg);}
-  .fc2{top:38%;right:1%;transform:rotate(2deg);}
-  .fc3{top:66%;right:14%;transform:rotate(-2deg);}
-  .fc4{top:14%;right:32%;transform:rotate(3deg);}
-  .fc5{top:80%;right:38%;transform:rotate(-4deg);}
-  @media (max-width:980px){
-    .float-cards{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:44px;}
-    .float-card{position:static !important;transform:none !important;}
-  }
-
-  /* ---------- marquee ---------- */
-  .marquee{background:var(--ink);border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);overflow:hidden;padding-block:0;}
-  .mq-row{overflow:hidden;padding-block:16px;}
-  .mq-row.alt{padding-block:12px;border-top:1px solid var(--line-dark);}
-  .mq-track{display:flex;align-items:center;gap:28px;width:max-content;white-space:nowrap;animation:mq-l 28s linear infinite;}
-  .mq-row.alt .mq-track{animation:mq-r 34s linear infinite;}
-  .mq-track span{color:var(--orange);}
-  .mq-row.alt .mq-track{color:var(--grey);}
-  .mq-row.alt .mq-track b{color:var(--paper);font-weight:600;}
-  .mq-row:not(.alt) .mq-track{font-family:"Space Grotesk";font-size:clamp(22px,3.6vw,40px);font-weight:700;text-transform:uppercase;color:var(--paper);}
-  .mq-row.alt .mq-track{font-family:"Space Grotesk";font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
-  @keyframes mq-l{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-  @keyframes mq-r{ from{transform:translateX(-50%);} to{transform:translateX(0);} }
-  @media (prefers-reduced-motion:reduce){ .mq-track{animation:none;} }
-
-  /* ---------- stat row ---------- */
-  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:56px;background:var(--line);border:1px solid var(--line);}
-  @media (max-width:900px){ .stat-row{grid-template-columns:repeat(2,1fr);} }
-  .stat{background:var(--paper);padding:28px 24px;}
-  .stat-v{display:block;font-family:"Space Grotesk";font-size:clamp(40px,5vw,64px);font-weight:700;line-height:1;}
-  .stat-l{display:block;margin-top:10px;font-size:13px;color:var(--ink);opacity:.6;line-height:1.5;}
-  .stat-l small{display:block;font-size:11.5px;opacity:.85;margin-top:2px;}
-
-  /* ---------- creator orbit ---------- */
-  .orbit-wrap{position:relative;margin-top:64px;display:flex;align-items:center;justify-content:center;}
-  .orbit{
-    position:relative;width:min(720px,100%);aspect-ratio:1/1;margin-inline:auto;
-    border-radius:50%;border:1px dashed var(--line);
-  }
-  .orbit-center{
-    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:20px;
-  }
-  .orbit-center .oc-v{font-family:"Space Grotesk";font-weight:700;font-size:clamp(30px,4vw,46px);line-height:1;}
-  .orbit-center .oc-l{font-family:"Space Grotesk";font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);opacity:.55;margin-top:10px;max-width:16ch;}
-  .orbit-ring{
-    position:absolute;inset:0;animation:orbit-spin 70s linear infinite;
-  }
-  .orbit-ring.paused{animation-play-state:paused;}
-  @keyframes orbit-spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
-  .orbit-card{
-    position:absolute;top:50%;left:50%;width:150px;margin-top:-64px;margin-left:-75px;
-    transform-origin:75px 64px;
-  }
-  .oc-spin{
-    animation:counter-spin 70s linear infinite;
-  }
-  .orbit-ring.paused .oc-spin{animation-play-state:paused;}
-  @keyframes counter-spin{ from{transform:rotate(0deg);} to{transform:rotate(-360deg);} }
-  .orbit-card a{
-    display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
-    overflow:hidden;text-decoration:none;color:var(--ink);
-    transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s ease;
-  }
-  .orbit-card .oimg{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--charcoal);}
-  .orbit-card .oimg img{width:100%;height:100%;object-fit:cover;}
-  .orbit-card .ocap{padding:9px 11px;}
-  .orbit-card .ocap b{display:block;font-family:"Space Grotesk";font-size:12px;font-weight:700;}
-  .orbit-card .ocap span{display:block;font-size:10.5px;color:var(--ink);opacity:.55;margin-top:2px;}
-  .orbit-card:hover a{transform:scale(1.12);border-color:var(--orange);z-index:5;position:relative;}
-  @media (max-width:760px){
-    .orbit{display:none;}
-    .orbit-mobile{display:grid !important;}
-  }
-  .orbit-mobile{display:none;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:56px;}
-  .orbit-mobile a{
-    display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink);
-  }
-  .orbit-mobile .oimg{aspect-ratio:1/1;overflow:hidden;background:var(--charcoal);}
-  .orbit-mobile .oimg img{width:100%;height:100%;object-fit:cover;}
-  .orbit-mobile .ocap{padding:9px 11px;}
-  .orbit-mobile .ocap b{display:block;font-family:"Space Grotesk";font-size:12px;font-weight:700;}
-  .orbit-mobile .ocap span{display:block;font-size:10.5px;opacity:.55;margin-top:2px;}
-
-  /* ---------- performance kpis + graph ---------- */
-  .perf-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;margin-top:56px;align-items:start;}
-  @media (max-width:900px){ .perf-grid{grid-template-columns:1fr;} }
-  .perf-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);}
-  .pk{background:var(--ink);padding:22px;}
-  .pk--accent{background:var(--charcoal);}
-  .pk-v{display:block;font-family:"Space Grotesk";font-size:clamp(26px,3vw,34px);font-weight:700;color:var(--paper);}
-  .pk--accent .pk-v{color:var(--orange);}
-  .pk-l{display:block;margin-top:6px;font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;}
-  .perf-graph{background:var(--ink);border:1px solid var(--line-dark);border-radius:var(--r);padding:24px;}
-  .perf-graph svg{width:100%;height:auto;display:block;}
-  .draw-line{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1);}
-  .perf-graph-labels{display:flex;justify-content:space-between;margin-top:14px;font-family:"Space Grotesk";font-size:12px;color:var(--grey);}
-  .perf-graph-labels b{color:var(--paper);}
-  .perf-shots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
-  @media (max-width:760px){ .perf-shots{grid-template-columns:1fr;} }
-  .perf-shots figure{margin:0;border:1px solid var(--line-dark);border-radius:var(--r);overflow:hidden;background:var(--ink);}
-  .perf-shots img{width:100%;height:auto;display:block;}
-  .perf-shots figcaption{padding:10px 14px;font-size:11.5px;color:var(--grey);border-top:1px solid var(--line-dark);}
-
-  /* ---------- attention -> influence -> performance -> results strip ---------- */
-  .story{background:var(--ink);color:var(--paper);padding-block:56px;overflow:hidden;}
-  .story-track{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;}
-  .story-word{
-    font-family:"Space Grotesk";font-weight:700;font-size:clamp(20px,3.2vw,38px);text-transform:uppercase;
-    letter-spacing:-.01em;
-  }
-  .story-word.on{color:var(--orange);}
-  .story-arrow{color:var(--grey);font-size:clamp(16px,2vw,24px);}
-
-  /* ---------- case studies ---------- */
-  .case{border-top:1px solid var(--line);padding-block:56px;position:relative;}
-  .case:first-of-type{border-top:none;}
-  .case-num{
-    position:absolute;top:8px;right:0;font-family:"Space Grotesk";font-weight:700;
-    font-size:clamp(80px,10vw,160px);line-height:1;color:var(--ink);opacity:.05;pointer-events:none;user-select:none;
-  }
-  .case-head{position:relative;z-index:1;max-width:72ch;}
-  .case-cat{
-    font-family:"Space Grotesk";font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--ink);background:var(--orange);display:inline-block;padding:4px 10px;border-radius:3px;
-  }
-  .case-title{margin-top:16px;font-size:clamp(24px,3.2vw,38px);font-weight:700;}
-  .case-csr{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px;max-width:100ch;}
-  @media (max-width:840px){ .case-csr{grid-template-columns:1fr;} }
-  .case-csr div b{
-    font-family:"Space Grotesk";font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--ink);opacity:.5;display:block;margin-bottom:8px;
-  }
-  .case-csr div p{margin:0;font-size:14.5px;line-height:1.65;color:var(--ink);}
-  .case-results{display:flex;flex-wrap:wrap;gap:48px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line);}
-  .case-results div{min-width:140px;}
-  .res-v{display:block;font-family:"Space Grotesk";font-size:clamp(44px,5.6vw,72px);font-weight:700;line-height:1;}
-  .res-l{display:block;margin-top:8px;font-size:13px;color:var(--ink);opacity:.6;max-width:22ch;line-height:1.4;}
-
-  /* ---------- results wall ---------- */
-  .results-wall{background:var(--ink);color:var(--paper);padding-block:clamp(72px,10vw,120px);}
-  .rw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);margin-top:16px;}
-  @media (max-width:840px){ .rw-grid{grid-template-columns:repeat(2,1fr);} }
-  .rw-cell{background:var(--ink);padding:36px 24px;}
-  .rw-v{font-family:"Space Grotesk";font-weight:700;font-size:clamp(40px,6vw,88px);line-height:1;color:var(--orange);}
-  .rw-l{margin-top:12px;font-size:13px;color:var(--grey);line-height:1.5;max-width:24ch;}
-
-  /* ---------- trust strip (logos) ---------- */
-  .trust{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:44px;}
-  .trust-label{font-family:"Space Grotesk";font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:.5;}
-  .trust-wrap{margin-top:24px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
-  .trust-track{display:flex;align-items:center;gap:16px;width:max-content;animation:mq-l 30s linear infinite;}
-  .trust-chip{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 26px;display:flex;align-items:center;justify-content:center;height:64px;flex:none;}
-  .trust-chip img{height:30px;width:auto;max-width:150px;object-fit:contain;}
-
-  /* ---------- about + investment ---------- */
-  .about-lead{font-size:clamp(20px,2.6vw,28px);font-weight:500;color:var(--ink);line-height:1.5;max-width:52ch;margin-top:20px;font-family:"Space Grotesk";}
-  .invest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;}
-  @media (max-width:840px){ .invest-grid{grid-template-columns:1fr;} }
-  .invest-card{background:var(--paper);padding:32px 28px;position:relative;}
-  .invest-card--featured{background:var(--ink);color:var(--paper);}
-  .invest-tag{font-family:"Space Grotesk";font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.55;}
-  .invest-band{font-family:"Space Grotesk";font-size:28px;font-weight:700;margin-top:14px;}
-  .invest-card--featured .invest-band{color:var(--orange);}
-  .invest-name{font-size:14px;font-weight:600;margin-top:6px;}
-  .invest-desc{font-size:13px;opacity:.65;line-height:1.6;margin-top:8px;}
-  .invest-card ul{list-style:none;margin:22px 0 0;padding:20px 0 0;border-top:1px solid var(--line);font-size:13px;line-height:1.9;opacity:.85;}
-  .invest-card--featured ul{border-top-color:var(--line-dark);}
-  .invest-card ul li{position:relative;padding-left:20px;}
-  .invest-card ul li::before{content:"→";position:absolute;left:0;color:var(--orange);font-weight:700;}
-  .invest-card--featured{}
-
-  /* ---------- footer ---------- */
-  .footer{background:var(--ink);color:var(--paper);padding-block:clamp(64px,9vw,100px) 32px;}
-  .footer-h{font-size:clamp(34px,5.2vw,64px);font-weight:700;max-width:16ch;text-transform:uppercase;}
-  .footer-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:32px;}
-  .footer-contacts{display:flex;flex-direction:column;gap:14px;}
-  .footer-contacts a{
-    font-family:"Space Grotesk";font-weight:600;font-size:16px;text-decoration:none;color:var(--paper);
-    display:flex;flex-direction:column;gap:2px;
-  }
-  .footer-contacts a span{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;font-family:"Inter";font-weight:600;}
-  .footer-contacts a:hover{color:var(--orange);}
-  .footer-bottom{
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    margin-top:56px;padding-top:22px;border-top:1px solid var(--line-dark);
-    font-size:12px;color:var(--grey);
-  }
-
-  /* ---------- floating whatsapp ---------- */
-  .wa-float{
-    position:fixed;right:18px;bottom:18px;z-index:60;
-    display:flex;align-items:center;gap:10px;
-    background:var(--orange);color:#fff;text-decoration:none;
-    border-radius:999px;padding:13px 16px;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);
-  }
-  .wa-float svg{width:20px;height:20px;flex:none;}
-  .wa-float .wa-text{font-family:"Space Grotesk";font-weight:700;font-size:12.5px;letter-spacing:.01em;white-space:nowrap;}
-  .wa-float .wa-text .l1{display:block;opacity:.85;font-size:10px;text-transform:uppercase;letter-spacing:.06em;}
-  @media (max-width:640px){ .wa-float .wa-text .l1{display:none;} }
+body{margin:0;background:#0F0D0B;color:#F7F3EC;font-family:'Instrument Sans','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#FF8A3D;text-decoration:none}a:hover{color:#FFB27A}
+h1,h2,h3{font-family:'Bricolage Grotesque',Georgia,serif;margin:0;letter-spacing:-0.025em}
+p{margin:0}button{font-family:inherit;cursor:pointer}
+@keyframes mql{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mqr{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes mqu{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes mqd{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.mq-l{animation:mql 30s linear infinite}.mq-r{animation:mqr 30s linear infinite}
+.mq-l.slow,.mq-r.slow{animation-duration:40s}.mq-l.slower{animation-duration:48s}
+.mq-l.slowest,.mq-r.slowest{animation-duration:70s}
+.mq-u{animation:mqu 26s linear infinite}.mq-d{animation:mqd 26s linear infinite}
+.mq-l:hover,.mq-r:hover,.mq-u:hover,.mq-d:hover{animation-play-state:paused}
+.lift{transition:transform .25s ease, border-color .25s ease}.lift:hover{transform:translateY(-6px);border-color:#FF6600}
+.dot{animation:pulse 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.mq-l,.mq-r,.mq-u,.mq-d,.dot{animation:none}}
+@media (max-width:820px){
+div[style*="min-width: 1200px"]{min-width:0!important}
+header nav{padding:12px 16px!important;flex-wrap:wrap!important;gap:12px!important}
+header nav>a:first-child>span:last-child{display:none!important}
+header nav>a:first-child span{font-size:18px!important}
+header nav>div[role=navigation]{order:3;flex:1 1 100%;font-size:14px!important}
+header nav>div[role=navigation]>a{flex:1;text-align:center;padding:10px 12px!important}
+header nav>a[href^="https://wa.me"]{padding:10px 18px!important;font-size:14px!important}
+[style*="padding: 0 40px"]{padding-left:20px!important;padding-right:20px!important}
+section[style*="max-width: 1280px"]{padding-left:20px!important;padding-right:20px!important}
+#top{grid-template-columns:1fr!important;padding-top:32px!important;padding-bottom:48px!important;gap:32px!important}
+#top>div{grid-column:auto!important}
+#top h1{font-size:clamp(46px,14vw,68px)!important}
+#top p{font-size:17px!important}
+#top>div:first-child>div:last-child{flex-wrap:wrap}
+#top>div:last-child{height:420px!important}
+h2{font-size:clamp(34px,10vw,46px)!important}
+#work>div:first-child,#creators>div:first-child{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:16px!important}
+#work div[style*="repeat(2"],#creators div[style*="repeat(2"]{grid-template-columns:1fr!important}
+#work div[style*="repeat(3"]{grid-template-columns:repeat(auto-fit,minmax(104px,1fr))!important}
+#work h3{font-size:26px!important}
+#work article>div[style*="padding: 30px"]{padding:22px!important}
+#work article>button{height:200px!important}
+#clients,#proof,#creators{padding-top:56px!important;padding-bottom:64px!important}
+#work{padding-top:24px!important;padding-bottom:64px!important}
+#contact{padding-top:64px!important}
+#contact h2{font-size:clamp(52px,17vw,80px)!important}
+#contact div[style*="justify-content: space-between"]{flex-direction:column!important;align-items:flex-start!important}
+#contact div[style*="gap: 26px"]{flex-wrap:wrap;gap:10px 22px!important}
+#contact div[style*="flex-wrap"] a{font-size:15px!important;padding:16px 22px!important}
+div[style*="position: fixed"][style*="inset: 0"]{padding:16px!important}
+}
 </style>
+</helmet>
+<div style="width: 100%; min-width: 1200px; box-sizing: border-box; background: #0F0D0B; color: #F7F3EC; display: flex; flex-direction: column; overflow: hidden;">
 
-<nav class="nav">
-  <div class="wrap">
-    <a class="nav-brand" href="#top">
-      <img src="logos/marketian-mark.png" alt="">
-      <span>Brand Marketian</span>
-    </a>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#influencer">Influencer</a>
-      <a href="#performance">Performance</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
+<header style="position: sticky; top: 0; z-index: 20; background: rgba(15,13,11,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #2E2822;">
+<nav style="max-width: 1280px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; color: #F7F3EC;"><img src="./assets/48d7797f2132d6696d5d4e311bcf6e99.png" alt="Brand Marketian logo mark" style="height: 34px; width: auto; display: block;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px;">Brand Marketian</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; border: 1px solid #2E2822; padding: 4px 8px; border-radius: 999px;">PORTFOLIO</span></a>
+<div role="navigation" aria-label="Portfolio sections" style="display: flex; gap: 4px; padding: 4px; border: 1px solid #2E2822; border-radius: 999px; background: #17130F; font-size: 15px; font-weight: 600;"><a href="/" aria-current="page" style="background: #FF6600; color: #16130F; padding: 9px 24px; border-radius: 999px;">Performance</a><a href="/influencer" style="color: #F7F3EC; padding: 9px 24px; border-radius: 999px;">Influencer</a></div>
+<a href="https://wa.me/919650618193?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." style="background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px;">Let's talk</a>
 </nav>
-
-<header class="hero" id="top">
-  <div class="hero-inner">
-    <span class="hero-kicker">Influencer Marketing × Performance Marketing</span>
-    <h1 class="hero-h1">
-      <span class="reveal" style="--i:0">WE TURN</span>
-      <span class="reveal" style="--i:1">ATTENTION</span>
-      <span class="reveal accent" style="--i:2">INTO RESULTS.</span>
-    </h1>
-    <p class="hero-sub reveal" style="--i:3">Creator campaigns, paid media and growth strategies built to make brands impossible to ignore.</p>
-    <div class="hero-actions reveal" style="--i:4">
-      <a class="btn btn-orange" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20request%20your%20influencer%2Fcreator%20list.%20Please%20share%20the%20relevant%20creators%20for%20my%20brand." target="_blank" rel="noopener">Request Influencer List <span class="arrow">↗</span></a>
-      <a class="btn btn-outline" href="#work">View Our Work <span class="arrow">→</span></a>
-    </div>
-    <p class="hero-note reveal" style="--i:5;margin-top:16px;">2,000+ creator network · Real accounts, real numbers</p>
-  </div>
-  <div class="float-cards" id="floatCards">
-    <div class="float-card fc1" data-rot="-3"><span class="fc-v" data-count="650">0</span><span class="fc-l">Leads · ₹13.04 CPL, Meta Ads</span></div>
-    <div class="float-card fc2" data-rot="2"><span class="fc-v" data-prefix="₹" data-count="100" data-suffix="Cr+">0</span><span class="fc-l">Pipeline built, franchise client</span></div>
-    <div class="float-card fc3" data-rot="-2"><span class="fc-v" data-count="524" data-suffix="K">0</span><span class="fc-l">Reel views, OPPO F29 5G launch</span></div>
-    <div class="float-card fc4" data-rot="3"><span class="fc-v" data-count="2000" data-suffix="+">0</span><span class="fc-l">Creators in the network</span></div>
-    <div class="float-card fc5" data-rot="-4"><span class="fc-v" data-count="52" data-suffix="×">0</span><span class="fc-l">Cheaper cost/lead, Meta vs Google</span></div>
-  </div>
 </header>
 
-<div class="marquee">
-  <div class="mq-row">
-    <div class="mq-track">INFLUENCERS <span>→</span> CONTENT <span>→</span> PERFORMANCE <span>→</span> SCALE <span>→</span> RESULTS <span>→</span> INFLUENCERS <span>→</span> CONTENT <span>→</span> PERFORMANCE <span>→</span> SCALE <span>→</span> RESULTS <span>→</span></div>
-  </div>
-  <div class="mq-row alt">
-    <div class="mq-track"><b>META ADS</b> <span>•</span> <b>GOOGLE ADS</b> <span>•</span> <b>CREATOR CAMPAIGNS</b> <span>•</span> <b>UGC</b> <span>•</span> <b>RETARGETING</b> <span>•</span> <b>META ADS</b> <span>•</span> <b>GOOGLE ADS</b> <span>•</span> <b>CREATOR CAMPAIGNS</b> <span>•</span> <b>UGC</b> <span>•</span> <b>RETARGETING</b> <span>•</span></div>
-  </div>
+<section id="top" style="max-width: 1280px; margin: 0 auto; padding: 64px 40px 72px; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: center;">
+<div style="grid-column: span 7; display: flex; flex-direction: column; gap: 28px;">
+<div style="display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #BFB6A8; letter-spacing: 0.08em;"><span class="dot" style="width: 9px; height: 9px; border-radius: 50%; background: #4ADE80;"></span>SELECTED WORK · 2023 – 2026</div>
+<h1 style="font-size: 92px; line-height: 0.92; font-weight: 800;">We turn attention into <span style="color: {{accent}};">results.</span></h1>
+<p style="font-size: 20px; line-height: 1.55; color: #BFB6A8; max-width: 560px;">Brands we built from zero, pipelines we filled and leads we delivered, for 50+ brands across India. Real accounts, real numbers.</p>
+<div style="display: flex; gap: 14px;">
+<a href="#work" style="background: #F7F3EC; color: #16130F; font-weight: 700; font-size: 16px; padding: 18px 28px; border-radius: 999px;">See the work ↓</a>
+<a href="#clients" style="border: 1.5px solid #F7F3EC; color: #F7F3EC; font-weight: 600; font-size: 16px; padding: 17px 26px; border-radius: 999px;">Brands we've worked with</a>
+</div>
+</div>
+<div style="grid-column: span 5; height: 560px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; position: relative;">
+<div style="overflow: hidden; height: 100%;"><div class="mq-u" style="display: flex; flex-direction: column; gap: 14px;">
+<div style="background: {{accent}}; border: none; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #16130F;">₹100 Cr</span><span style="font-size: 14px; line-height: 1.45; color: #16130F;">Franchise expansion pipeline, built from scratch</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">650</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">Meta leads at ₹13.04 each</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">524K</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">Reel views on one creator launch</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">1,023</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">B2B leads for a décor brand at ₹13.65</span></div>
+<div style="background: {{accent}}; border: none; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #16130F;">₹100 Cr</span><span style="font-size: 14px; line-height: 1.45; color: #16130F;">Franchise expansion pipeline, built from scratch</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">650</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">Meta leads at ₹13.04 each</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">524K</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">Reel views on one creator launch</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">1,023</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">B2B leads for a décor brand at ₹13.65</span></div>
+</div></div>
+<div style="overflow: hidden; height: 100%;"><div class="mq-d" style="display: flex; flex-direction: column; gap: 14px;">
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">₹30L</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">B2B deals closed in 3 months</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">1.4M+</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">Facebook page views on one managed page</span></div>
+<div style="background: {{accent}}; border: none; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #16130F;">2,000+</span><span style="font-size: 14px; line-height: 1.45; color: #16130F;">Creators in our network</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">₹80L</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">Pipeline lined up till Diwali</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">₹30L</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">B2B deals closed in 3 months</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">1.4M+</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">Facebook page views on one managed page</span></div>
+<div style="background: {{accent}}; border: none; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #16130F;">2,000+</span><span style="font-size: 14px; line-height: 1.45; color: #16130F;">Creators in our network</span></div>
+<div style="background: #1A1714; border: 1px solid #2E2822; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1; color: #F7F3EC;">₹80L</span><span style="font-size: 14px; line-height: 1.45; color: #BFB6A8;">Pipeline lined up till Diwali</span></div>
+</div></div>
+<div style="position: absolute; left: 0; right: 0; top: 0; height: 70px; background: linear-gradient(#0F0D0B, rgba(15,13,11,0)); pointer-events: none;"></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: linear-gradient(rgba(15,13,11,0), #0F0D0B); pointer-events: none;"></div>
+</div>
+</section>
+
+<div style="position: relative; height: 190px; margin: 10px 0 40px;">
+<div style="position: absolute; left: -40px; right: -40px; top: 40px; transform: rotate(-3deg);"><div style="background: #F7F3EC; padding: 20px 0; overflow: hidden;"><div class="mq-l" style="display: flex; gap: 36px; width: max-content;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">META ADS<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">GOOGLE ADS<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">CREATOR CAMPAIGNS<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">BRAND BUILDING<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">LEAD GENERATION<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">B2B PIPELINE<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">UGC<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">RETARGETING<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">META ADS<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">GOOGLE ADS<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">CREATOR CAMPAIGNS<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">BRAND BUILDING<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">LEAD GENERATION<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">B2B PIPELINE<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">UGC<span style="color: #FF6600;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">RETARGETING<span style="color: #FF6600;">✦</span></span></div></div></div>
+<div style="position: absolute; left: -40px; right: -40px; top: 40px; transform: rotate(3deg);"><div style="background: {{accent}}; padding: 20px 0; overflow: hidden;"><div class="mq-r" style="display: flex; gap: 36px; width: max-content;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">META ADS<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">GOOGLE ADS<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">CREATOR CAMPAIGNS<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">BRAND BUILDING<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">LEAD GENERATION<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">B2B PIPELINE<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">UGC<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">RETARGETING<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">META ADS<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">GOOGLE ADS<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">CREATOR CAMPAIGNS<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">BRAND BUILDING<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">LEAD GENERATION<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">B2B PIPELINE<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">UGC<span style="color: #16130F;">✦</span></span>
+<span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 40px; color: #16130F; white-space: nowrap; display: flex; align-items: center; gap: 36px;">RETARGETING<span style="color: #16130F;">✦</span></span></div></div></div>
 </div>
 
-<section id="influencer" class="sec sec--light">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">01 — Influencer Marketing</span>
-      <h2 class="sec-h2 reveal">Creators who move product,<br><span style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--orange);text-decoration-thickness:4px;">not just impressions.</span></h2>
-    </div>
-
-    <div class="stat-row">
-      <div class="stat reveal" style="--i:0"><span class="stat-v" data-count="2000" data-suffix="+">0</span><span class="stat-l">Creators Activated<small>500+ exclusive to the network</small></span></div>
-      <div class="stat reveal" style="--i:1"><span class="stat-v" data-count="1" data-suffix="M+">0</span><span class="stat-l">Combined Reach<small>across creators featured on this page</small></span></div>
-      <div class="stat reveal" style="--i:2"><span class="stat-v" data-count="2.8" data-decimals="1" data-suffix="%">0</span><span class="stat-l">Avg. Engagement<small>Tech category, real database</small></span></div>
-      <div class="stat reveal" style="--i:3"><span class="stat-v" data-count="8">0</span><span class="stat-l">Profiles Verified<small>700+ more on request</small></span></div>
-    </div>
-
-    <div class="orbit-wrap">
-      <div class="orbit" id="orbit">
-        <div class="orbit-center reveal">
-          <span class="oc-v num" data-count="2000" data-suffix="+">0</span>
-          <span class="oc-l">Creators Ready to Activate</span>
-        </div>
-        <div class="orbit-ring" id="orbitRing">
-          <div class="orbit-card" style="--ang:0deg;"><div class="oc-spin"><a href="https://www.instagram.com/arnicadqueen/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/arnicadqueen-oppo.png" alt="arnicadqueen" loading="lazy"></div><div class="ocap"><b>@arnicadqueen</b><span>Beauty · 101K · 524K views</span></div></a></div></div>
-          <div class="orbit-card" style="--ang:51deg;"><div class="oc-spin"><a href="https://www.instagram.com/ridhimabhatia20/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/ridhimabhatia20-skincare.png" alt="ridhimabhatia20" loading="lazy"></div><div class="ocap"><b>@ridhimabhatia20</b><span>Skincare · 442K followers</span></div></a></div></div>
-          <div class="orbit-card" style="--ang:102deg;"><div class="oc-spin"><a href="https://www.instagram.com/destinywithfood/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/destinywithfood-idli.png" alt="destinywithfood" loading="lazy"></div><div class="ocap"><b>@destinywithfood</b><span>Food · 83.9K followers</span></div></a></div></div>
-          <div class="orbit-card" style="--ang:153deg;"><div class="oc-spin"><a href="https://www.instagram.com/techxanmol/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/techxanmol-vivo.png" alt="techxanmol" loading="lazy"></div><div class="ocap"><b>@techxanmol</b><span>Tech · 64.8K followers</span></div></a></div></div>
-          <div class="orbit-card" style="--ang:204deg;"><div class="oc-spin"><a href="https://www.instagram.com/davoguecurly/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/davoguecurly-makeup.png" alt="davoguecurly" loading="lazy"></div><div class="ocap"><b>@davoguecurly</b><span>Fashion · 112K followers</span></div></a></div></div>
-          <div class="orbit-card" style="--ang:255deg;"><div class="oc-spin"><a href="https://www.instagram.com/candidlysheetal/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/candidlysheetal-dove.png" alt="candidlysheetal" loading="lazy"></div><div class="ocap"><b>@candidlysheetal</b><span>Fitness · 107K followers</span></div></a></div></div>
-          <div class="orbit-card" style="--ang:306deg;"><div class="oc-spin"><a href="https://www.instagram.com/mrtechpedia/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/mrtechpedia-iphone.png" alt="mrtechpedia" loading="lazy"></div><div class="ocap"><b>@mrtechpedia</b><span>Tech · 87.5K followers</span></div></a></div></div>
-        </div>
-      </div>
-    </div>
-    <div class="orbit-mobile">
-      <a href="https://www.instagram.com/arnicadqueen/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/arnicadqueen-oppo.png" alt="arnicadqueen" loading="lazy"></div><div class="ocap"><b>@arnicadqueen</b><span>524K reel views</span></div></a>
-      <a href="https://www.instagram.com/ridhimabhatia20/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/ridhimabhatia20-skincare.png" alt="ridhimabhatia20" loading="lazy"></div><div class="ocap"><b>@ridhimabhatia20</b><span>442K followers</span></div></a>
-      <a href="https://www.instagram.com/destinywithfood/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/destinywithfood-idli.png" alt="destinywithfood" loading="lazy"></div><div class="ocap"><b>@destinywithfood</b><span>83.9K followers</span></div></a>
-      <a href="https://www.instagram.com/davoguecurly/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/davoguecurly-makeup.png" alt="davoguecurly" loading="lazy"></div><div class="ocap"><b>@davoguecurly</b><span>112K followers</span></div></a>
-    </div>
-
-    <div style="margin-top:56px;">
-      <a class="btn btn-outline-ink" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20get%20your%20creator%20list%20on%20WhatsApp%20%E2%80%94%20niche%2C%20city%2C%20followers%20and%20engagement." target="_blank" rel="noopener">Get Creator List on WhatsApp <span class="arrow">→</span></a>
-    </div>
-  </div>
-</section>
-
-<div class="story">
-  <div class="wrap story-track">
-    <span class="story-word on reveal" style="--i:0">ATTENTION</span>
-    <span class="story-arrow reveal" style="--i:1">→</span>
-    <span class="story-word reveal" style="--i:2">INFLUENCE</span>
-    <span class="story-arrow reveal" style="--i:3">→</span>
-    <span class="story-word reveal" style="--i:4">PERFORMANCE</span>
-    <span class="story-arrow reveal" style="--i:5">→</span>
-    <span class="story-word on reveal" style="--i:6">RESULTS</span>
-  </div>
+<section id="clients" style="padding: 80px 0 110px; display: flex; flex-direction: column; gap: 18px;">
+<div style="max-width: 1280px; margin: 0 auto 30px; padding: 0 40px; box-sizing: border-box; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 14px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}; letter-spacing: 0.08em;">CLIENTS</span><h2 style="font-size: 64px; line-height: 1.0; font-weight: 800;">Brands we've worked for.</h2></div>
+<div style="display: flex; gap: 40px;">
+<div style="display: flex; flex-direction: column;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1;">50+</span><span style="font-size: 14px; color: #BFB6A8;">brands served</span></div>
+<div style="display: flex; flex-direction: column;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 48px; line-height: 1;">15+</span><span style="font-size: 14px; color: #BFB6A8;">built from scratch</span></div>
 </div>
-
-<section id="performance" class="sec sec--dark">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow eyebrow--dark">02 — Performance Marketing</span>
-      <h2 class="sec-h2 reveal" style="color:var(--paper);">Every rupee tracked.<br><span class="accent">Every lead accountable.</span></h2>
-    </div>
-
-    <div class="perf-grid">
-      <div class="perf-kpis reveal" style="--i:0">
-        <div class="pk"><span class="pk-v" data-prefix="₹" data-count="58.8" data-decimals="1" data-suffix="K">0</span><span class="pk-l">Ad Spend</span></div>
-        <div class="pk"><span class="pk-v" data-count="57.3" data-decimals="1" data-suffix="K">0</span><span class="pk-l">Impressions</span></div>
-        <div class="pk"><span class="pk-v" data-count="8.15" data-decimals="2" data-suffix="K">0</span><span class="pk-l">Clicks</span></div>
-        <div class="pk"><span class="pk-v" data-count="86">0</span><span class="pk-l">Leads</span></div>
-        <div class="pk"><span class="pk-v" data-prefix="₹" data-count="683.72" data-decimals="2">0</span><span class="pk-l">Cost / Lead</span></div>
-        <div class="pk pk--accent"><span class="pk-v" data-count="52" data-suffix="×">0</span><span class="pk-l">Cheaper CPL on Meta</span></div>
-      </div>
-      <div class="perf-graph reveal" style="--i:1">
-        <svg viewBox="0 0 400 190" role="img" aria-label="Cost per lead, Google Ads compared with Meta Ads">
-          <path class="draw-line" id="perfLine" d="M20,26 C160,26 240,150 380,150"/>
-          <circle cx="20" cy="26" r="5" fill="var(--paper)"/>
-          <circle cx="380" cy="150" r="5" fill="var(--orange)"/>
-        </svg>
-        <div class="perf-graph-labels">
-          <span><b>Google Ads</b> · ₹683.72 / lead</span>
-          <span><b>Meta Ads</b> · ₹13.04 / lead</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="perf-shots reveal" style="--i:2">
-      <figure>
-        <img src="dashboards/google-ads-overview.png" alt="Real Google Ads overview: 8.15k clicks, 57.3k impressions, 86 conversions, ₹58.8k cost" loading="lazy">
-        <figcaption>Google Ads · real account screenshot</figcaption>
-      </figure>
-      <figure>
-        <img src="dashboards/meta-leads-table.png" alt="Real Meta Ads leads table: 650 leads across 6 ads, ₹13.04 average cost per lead" loading="lazy">
-        <figcaption>Meta Ads · real account screenshot</figcaption>
-      </figure>
-    </div>
-  </div>
+</div>
+<div style="overflow: hidden;"><div class="mq-l slow" style="display: flex; gap: 16px; width: max-content;">
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/a1d0e51b869cea176f6b056055b927b2.png" alt="Acko logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/c1f0db669a2f0ebe36f396dfe8279c4f.png" alt="AJIO logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/1f711f0829f7ff324c3d4814ff3433b8.png" alt="Haldiram's logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/1f99a3fa4542ff256cde39a06ab562fc.png" alt="Fabindia logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/9f24affd829f4ab24260eb10f94a0487.png" alt="Bajaj Allianz logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/e276b41454833c658e5044bdb092d0ac.png" alt="HealthKart logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 12px 22px; background: #FFFFFF; border: none; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/993b352858b855e407b60e5eac62d59a.png" alt="Divine Home India logo" style="max-width: 100%; max-height: 84px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/a1d0e51b869cea176f6b056055b927b2.png" alt="Acko logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/c1f0db669a2f0ebe36f396dfe8279c4f.png" alt="AJIO logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/1f711f0829f7ff324c3d4814ff3433b8.png" alt="Haldiram's logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/1f99a3fa4542ff256cde39a06ab562fc.png" alt="Fabindia logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/9f24affd829f4ab24260eb10f94a0487.png" alt="Bajaj Allianz logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/e276b41454833c658e5044bdb092d0ac.png" alt="HealthKart logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 12px 22px; background: #FFFFFF; border: none; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/993b352858b855e407b60e5eac62d59a.png" alt="Divine Home India logo" style="max-width: 100%; max-height: 84px; object-fit: contain; display: block;"></div>
+</div></div>
+<div style="overflow: hidden;"><div class="mq-r slow" style="display: flex; gap: 16px; width: max-content;">
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/c5621316329086e4f943d490192365d7.png" alt="Marks &amp; Spencer logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/966b0e19d6633d8d7210392efe092851.png" alt="Physics Wallah logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/c4499c6116402347505a66ae67d6ff0c.png" alt="Libas logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/392c39a926fdd273ff1f16f2bde607fa.png" alt="Milton logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/0d142295b7082f10d88f05b9f362af7f.png" alt="MuscleBlaze logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/6916033745cccc0c000f6741a1eb2a9e.png" alt="Black Berrys logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 12px 22px; background: #16130F; border: 1px solid #3A332B; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/945931cc2b56c90e897dd6809c06ddeb.png" alt="Sri Sai Convention Hall logo" style="max-width: 100%; max-height: 84px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/c5621316329086e4f943d490192365d7.png" alt="Marks &amp; Spencer logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/966b0e19d6633d8d7210392efe092851.png" alt="Physics Wallah logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/c4499c6116402347505a66ae67d6ff0c.png" alt="Libas logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/392c39a926fdd273ff1f16f2bde607fa.png" alt="Milton logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/0d142295b7082f10d88f05b9f362af7f.png" alt="MuscleBlaze logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/6916033745cccc0c000f6741a1eb2a9e.png" alt="Black Berrys logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 12px 22px; background: #16130F; border: 1px solid #3A332B; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/945931cc2b56c90e897dd6809c06ddeb.png" alt="Sri Sai Convention Hall logo" style="max-width: 100%; max-height: 84px; object-fit: contain; display: block;"></div>
+</div></div>
+<div style="overflow: hidden;"><div class="mq-l slower" style="display: flex; gap: 16px; width: max-content;">
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/69bb3336ec67409a02eb88fe14d0ffce.png" alt="Fuel One logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/9574046aeab0259c200a06c4155440d4.png" alt="Om Books International logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/d877afbaf302589cc8f2529b0c21c285.png" alt="Avighna Steel logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/7bf322f6269d75d8b6adba741720d006.png" alt="Steel Bazaar logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/132367a2dd0e8becd485b5259fe8ca72.png" alt="Nakul Associates logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/909750d4b296bbe2c4345b0f4ce2fc16.png" alt="Franchise Business Solution logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 12px 22px; background: #FFFFFF; border: none; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/fcd1e1d4418d75b3ba7a147c98f4596d.png" alt="The Pet Foundry logo" style="max-width: 100%; max-height: 84px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 12px 22px; background: #FFFFFF; border: none; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/a6987e79c9a8ba98ef8aace06b5d461b.png" alt="Community Chulha logo" style="max-width: 100%; max-height: 84px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/69bb3336ec67409a02eb88fe14d0ffce.png" alt="Fuel One logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/9574046aeab0259c200a06c4155440d4.png" alt="Om Books International logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/d877afbaf302589cc8f2529b0c21c285.png" alt="Avighna Steel logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/7bf322f6269d75d8b6adba741720d006.png" alt="Steel Bazaar logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/132367a2dd0e8becd485b5259fe8ca72.png" alt="Nakul Associates logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 20px 26px; background: #FFFFFF; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/909750d4b296bbe2c4345b0f4ce2fc16.png" alt="Franchise Business Solution logo" style="max-width: 100%; max-height: 66px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 12px 22px; background: #FFFFFF; border: none; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/fcd1e1d4418d75b3ba7a147c98f4596d.png" alt="The Pet Foundry logo" style="max-width: 100%; max-height: 84px; object-fit: contain; display: block;"></div>
+<div style="width: 230px; height: 112px; flex-shrink: 0; box-sizing: border-box; padding: 12px 22px; background: #FFFFFF; border: none; border-radius: 20px; display: flex; align-items: center; justify-content: center;"><img src="./assets/a6987e79c9a8ba98ef8aace06b5d461b.png" alt="Community Chulha logo" style="max-width: 100%; max-height: 84px; object-fit: contain; display: block;"></div>
+</div></div>
 </section>
 
-<section id="work" class="sec sec--light">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Case Studies</span>
-      <h2 class="sec-h2 reveal">The work, not the pitch.</h2>
-    </div>
-
-    <div class="case">
-      <span class="case-num">01</span>
-      <div class="case-head reveal">
-        <span class="case-cat">Influencer Campaign</span>
-        <h3 class="case-title">@arnicadqueen × OPPO F29 5G</h3>
-      </div>
-      <div class="case-csr reveal" style="--i:1">
-        <div><b>Challenge</b><p>OPPO's F29 5G launch needed authentic reach inside a beauty-meets-tech audience — not another paid banner nobody remembers.</p></div>
-        <div><b>Strategy</b><p>Match with a creator whose own bio already reads "worked with 300+ brands," with a genuine beauty · fashion · tech crossover following, and track proof directly against her live profile.</p></div>
-        <div><b>Execution</b><p>One sponsored Reel for the F29 5G launch, sitting alongside her existing organic collabs with Faces Canada, ibis Hotels and AGARO.</p></div>
-      </div>
-      <div class="case-results reveal" style="--i:2">
-        <div><span class="res-v num" data-count="524" data-suffix="K">0</span><span class="res-l">Reel views, verified live on profile</span></div>
-        <div><span class="res-v num" data-count="101" data-suffix="K">0</span><span class="res-l">Followers</span></div>
-        <div><span class="res-v num" data-count="4">0</span><span class="res-l">Existing brand collabs as trust signal</span></div>
-      </div>
-    </div>
-
-    <div class="case">
-      <span class="case-num">02</span>
-      <div class="case-head reveal">
-        <span class="case-cat">Performance Marketing</span>
-        <h3 class="case-title">Sri Sai Convention Hall</h3>
-      </div>
-      <div class="case-csr reveal" style="--i:1">
-        <div><b>Challenge</b><p>A Jayanagar wedding &amp; function hall needed enquiry volume, not brand awareness — pure lead generation, tracked to the rupee.</p></div>
-        <div><b>Strategy</b><p>Run Google Ads and Meta Lead Ads in parallel, optimising purely for cost per qualified lead across both channels.</p></div>
-        <div><b>Execution</b><p>A Google Ads campaign (Apr '25 – Sept '26) alongside a 6-ad Meta Lead Ads set, both screenshotted live from the real ad accounts.</p></div>
-      </div>
-      <div class="case-results reveal" style="--i:2">
-        <div><span class="res-v num" data-count="736">0</span><span class="res-l">Total leads, Google + Meta combined</span></div>
-        <div><span class="res-v num" data-prefix="₹" data-count="683.72" data-decimals="2">0</span><span class="res-l">Cost / lead, Google Ads</span></div>
-        <div><span class="res-v num" data-count="52" data-suffix="×">0</span><span class="res-l">Cheaper cost / lead on Meta (₹13.04)</span></div>
-      </div>
-    </div>
-
-    <div class="case">
-      <span class="case-num">03</span>
-      <div class="case-head reveal">
-        <span class="case-cat">Growth Story</span>
-        <h3 class="case-title">Divine Home India</h3>
-      </div>
-      <div class="case-csr reveal" style="--i:1">
-        <div><b>Challenge</b><p>A Delhi décor label needed a functioning B2B sales pipeline from zero — three months, offline-only, no existing brand presence.</p></div>
-        <div><b>Strategy</b><p>Build the brand from scratch and put every conversation toward closing wholesale and direct-buyer deals rather than growing followers.</p></div>
-        <div><b>Execution</b><p>Offline relationship-building and direct outreach only — no paid channel run yet, by design, three months post-launch.</p></div>
-      </div>
-      <div class="case-results reveal" style="--i:2">
-        <div><span class="res-v num" data-prefix="₹" data-count="30" data-suffix="L">0</span><span class="res-l">B2B deal already closed</span></div>
-        <div><span class="res-v num" data-prefix="₹" data-count="80" data-suffix="L">0</span><span class="res-l">Pipeline targeted by Diwali</span></div>
-        <div><span class="res-v num" data-count="3">0</span><span class="res-l">Months since launch, offline-only</span></div>
-      </div>
-    </div>
-  </div>
+<section id="work" style="max-width: 1280px; margin: 0 auto; padding: 40px 40px 110px; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 14px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}; letter-spacing: 0.08em;">CASE STUDIES</span><h2 style="font-size: 64px; line-height: 1.0; font-weight: 800;">The work, not the pitch.</h2></div>
+<p style="font-size: 17px; line-height: 1.6; color: #BFB6A8; max-width: 420px;">Four stories, each opening with the number that mattered to the client. Tap a screenshot to see the real account.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px;">
+<article class="lift" style="background: #1A1714; border: 1px solid #2E2822; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
+<button type="button" onClick="{{open12}}" aria-label="Enlarge proof screenshot" style="padding: 0; border: none; background: #FFFFFF; height: 240px; width: 100%; overflow: hidden; display: block; position: relative;"><img src="./assets/937d204f4fd5847159000f18cadfda3d.png" alt="Meta Ads screenshot: Franchise Business Solution · lead ads" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"><span style="position: absolute; right: 14px; bottom: 14px; background: #16130F; color: #F7F3EC; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 999px;">Real Meta Ads screenshot · tap to enlarge</span></button>
+<div style="padding: 30px; display: flex; flex-direction: column; gap: 18px; flex-grow: 1;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #BFB6A8;">01 / FRANCHISE</span><span style="font-size: 12px; font-weight: 600; border: 1px solid #2E2822; padding: 6px 12px; border-radius: 999px; color: #F7F3EC;">Launched from scratch</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="font-size: 32px; line-height: 1.05; font-weight: 800;">Franchise Business Solution</h3><span style="font-size: 15px; color: #BFB6A8;">Franchise consulting · launch &amp; ongoing management</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; letter-spacing: 0.08em;">THE BRIEF</span><p style="font-size: 15px; line-height: 1.55; color: #D9D1C4;">A franchise consulting brand that had to exist before it could sell: no brand, no lead engine, big expansion targets.</p></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; letter-spacing: 0.08em;">WHAT WE DID</span><p style="font-size: 15px; line-height: 1.55; color: #D9D1C4;">Launched the brand from zero and run it end to end: positioning, content, and Meta lead campaigns with creatives tested every month.</p></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-top: 20px; border-top: 1px solid #2E2822; margin-top: auto;"><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: {{accent}};">₹100 Cr</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">franchise expansion pipeline</span></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: #F7F3EC;">0 → 1</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">brand launched &amp; managed</span></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: #F7F3EC;">26</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">ad creatives tested</span></div></div>
+<a href="https://franchisebusinesssolution.com/" style="font-weight: 600; font-size: 15px; color: {{accent}};">franchisebusinesssolution.com ↗</a>
+</div>
+</article>
+<article class="lift" style="background: #1A1714; border: 1px solid #2E2822; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
+<button type="button" onClick="{{open10}}" aria-label="Enlarge proof screenshot" style="padding: 0; border: none; background: #FFFFFF; height: 240px; width: 100%; overflow: hidden; display: block; position: relative;"><img src="./assets/81833f9f81bfceb72fbc8aaa7f68d582.png" alt="Meta Ads screenshot: Divine Home India · 1,023 B2B leads at ₹13.65" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"><span style="position: absolute; right: 14px; bottom: 14px; background: #16130F; color: #F7F3EC; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 999px;">Real Meta Ads screenshot · tap to enlarge</span></button>
+<div style="padding: 30px; display: flex; flex-direction: column; gap: 18px; flex-grow: 1;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #BFB6A8;">02 / HOME &amp; DÉCOR</span><span style="font-size: 12px; font-weight: 600; border: 1px solid #2E2822; padding: 6px 12px; border-radius: 999px; color: #F7F3EC;">Brand built from scratch</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="font-size: 32px; line-height: 1.05; font-weight: 800;">Divine Home India</h3><span style="font-size: 15px; color: #BFB6A8;">Home &amp; décor · offline-operated business</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; letter-spacing: 0.08em;">THE BRIEF</span><p style="font-size: 15px; line-height: 1.55; color: #D9D1C4;">An offline-only business with no brand behind it, needing dealers, distributors and hospitality buyers, not followers.</p></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; letter-spacing: 0.08em;">WHAT WE DID</span><p style="font-size: 15px; line-height: 1.55; color: #D9D1C4;">Built the brand from scratch, then pointed every campaign at B2B buyers: lead forms, messaging campaigns, and deals closed offline.</p></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-top: 20px; border-top: 1px solid #2E2822; margin-top: auto;"><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: {{accent}};">₹30L</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">B2B deals in 3 months</span></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: #F7F3EC;">₹80L</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">pipeline till Diwali</span></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: #F7F3EC;">1,023</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">B2B leads at ₹13.65</span></div></div>
+<a href="https://www.instagram.com/divinehomeindia/" style="font-weight: 600; font-size: 15px; color: {{accent}};">@divinehomeindia ↗</a>
+</div>
+</article>
+<article class="lift" style="background: #1A1714; border: 1px solid #2E2822; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
+<button type="button" onClick="{{open4}}" aria-label="Enlarge proof screenshot" style="padding: 0; border: none; background: #FFFFFF; height: 240px; width: 100%; overflow: hidden; display: block; position: relative;"><img src="./assets/71b483a0a8b590b3e07a7e5a4d577e8e.png" alt="Meta Ads screenshot: 650 leads · ₹13.04 per lead" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"><span style="position: absolute; right: 14px; bottom: 14px; background: #16130F; color: #F7F3EC; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 999px;">Real Meta Ads screenshot · tap to enlarge</span></button>
+<div style="padding: 30px; display: flex; flex-direction: column; gap: 18px; flex-grow: 1;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #BFB6A8;">03 / EVENT VENUE</span><span style="font-size: 12px; font-weight: 600; border: 1px solid #2E2822; padding: 6px 12px; border-radius: 999px; color: #F7F3EC;">Lead generation</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="font-size: 32px; line-height: 1.05; font-weight: 800;">Sri Sai Convention Hall</h3><span style="font-size: 15px; color: #BFB6A8;">Wedding &amp; function hall · Jayanagar, Bengaluru</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; letter-spacing: 0.08em;">THE BRIEF</span><p style="font-size: 15px; line-height: 1.55; color: #D9D1C4;">A busy venue that needed enquiry volume, not awareness. We were brought in to handle lead generation only.</p></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; letter-spacing: 0.08em;">WHAT WE DID</span><p style="font-size: 15px; line-height: 1.55; color: #D9D1C4;">Ran Google Search and Meta Lead Ads side by side, optimising for cost per enquiry and moving budget to the cheaper channel.</p></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-top: 20px; border-top: 1px solid #2E2822; margin-top: auto;"><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: {{accent}};">736</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">leads, Google + Meta</span></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: #F7F3EC;">₹13.04</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">cost per lead on Meta</span></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: #F7F3EC;">52x</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">cheaper leads on Meta</span></div></div>
+<a href="https://www.instagram.com/sri_sai_convention9thblock" style="font-weight: 600; font-size: 15px; color: {{accent}};">@sri_sai_convention9thblock ↗</a>
+</div>
+</article>
+<article class="lift" style="background: #1A1714; border: 1px solid #2E2822; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
+<div style="height: 240px; background: {{accent}}; display: flex; flex-direction: column; justify-content: center; padding: 0 32px; gap: 6px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 96px; line-height: 0.9; color: #16130F;">524K</span><span style="font-size: 16px; font-weight: 600; color: #16130F;">reel views on a single launch reel</span></div>
+<div style="padding: 30px; display: flex; flex-direction: column; gap: 18px; flex-grow: 1;">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #BFB6A8;">04 / CREATOR LAUNCH</span><span style="font-size: 12px; font-weight: 600; border: 1px solid #2E2822; padding: 6px 12px; border-radius: 999px; color: #F7F3EC;">Influencer campaign</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><h3 style="font-size: 32px; line-height: 1.05; font-weight: 800;">@arnicadqueen × OPPO F29 5G</h3><span style="font-size: 15px; color: #BFB6A8;">Creator launch · beauty × tech audience</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; letter-spacing: 0.08em;">THE BRIEF</span><p style="font-size: 15px; line-height: 1.55; color: #D9D1C4;">OPPO's F29 5G launch needed authentic reach inside a beauty-meets-tech audience, not another banner nobody remembers.</p></div>
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #BFB6A8; letter-spacing: 0.08em;">WHAT WE DID</span><p style="font-size: 15px; line-height: 1.55; color: #D9D1C4;">Matched a creator with a genuine beauty, fashion and tech crossover following and 300+ brand collabs, for one launch reel.</p></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; padding-top: 20px; border-top: 1px solid #2E2822; margin-top: auto;"><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: {{accent}};">524K</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">reel views</span></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: #F7F3EC;">101K</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">followers</span></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 32px; line-height: 1; color: #F7F3EC;">1</span><span style="font-size: 13px; line-height: 1.4; color: #BFB6A8;">reel, no paid boost</span></div></div>
+<a href="https://www.instagram.com/arnicadqueen/" style="font-weight: 600; font-size: 15px; color: {{accent}};">@arnicadqueen ↗</a>
+</div>
+</article>
+</div>
 </section>
 
-<section class="results-wall">
-  <div class="wrap">
-    <span class="eyebrow eyebrow--dark">Results, Not Adjectives</span>
-    <div class="rw-grid">
-      <div class="rw-cell reveal" style="--i:0"><div class="rw-v num" data-prefix="₹" data-count="100" data-suffix="Cr+">0</div><div class="rw-l">Pipeline built for a single franchise consulting client, from scratch</div></div>
-      <div class="rw-cell reveal" style="--i:1"><div class="rw-v num" data-count="650">0</div><div class="rw-l">Leads generated, one Meta campaign — ₹13.04 avg. cost per lead</div></div>
-      <div class="rw-cell reveal" style="--i:2"><div class="rw-v num" data-prefix="₹" data-count="30" data-suffix="L">0</div><div class="rw-l">B2B deal closed in 3 months, offline-only — Divine Home India</div></div>
-      <div class="rw-cell reveal" style="--i:3"><div class="rw-v num" data-count="2000" data-suffix="+">0</div><div class="rw-l">Creators in the working network — 500+ exclusive to Brand Marketian</div></div>
-    </div>
-  </div>
+<section id="proof" style="padding: 90px 0 110px; background: #16130F; border-top: 1px solid #2E2822; border-bottom: 1px solid #2E2822; display: flex; flex-direction: column; gap: 20px;">
+<div style="max-width: 1280px; margin: 0 auto 30px; padding: 0 40px; box-sizing: border-box; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 14px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}; letter-spacing: 0.08em;">REAL ACCOUNTS, REAL NUMBERS</span><h2 style="font-size: 64px; line-height: 1.0; font-weight: 800;">Proof, straight from the ad platforms.</h2></div>
+<p style="font-size: 17px; line-height: 1.6; color: #BFB6A8; max-width: 400px;">Live screenshots from Google Ads, Meta Ads Manager and Facebook Insights. Hover to pause, tap to enlarge.</p>
+</div>
+<div style="overflow: hidden;"><div class="mq-l slowest" style="display: flex; gap: 20px; width: max-content;">
+<button type="button" onClick="{{open1}}" aria-label="Enlarge Google Ads screenshot: Venue search ad · 129 clicks in 7 days" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/774db9bc392c293b2afa053cb17b5f01.png" alt="Google Ads screenshot: Venue search ad · 129 clicks in 7 days" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">GOOGLE ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Venue search ad · 129 clicks in 7 days</span></div>
+</button>
+<button type="button" onClick="{{open2}}" aria-label="Enlarge Google Ads screenshot: 8.15k clicks · 57.3k impressions · 86 conversions" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/2b5bc409dab743fc95a41c385b2dde71.png" alt="Google Ads screenshot: 8.15k clicks · 57.3k impressions · 86 conversions" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">GOOGLE ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">8.15k clicks · 57.3k impressions · 86 conversions</span></div>
+</button>
+<button type="button" onClick="{{open3}}" aria-label="Enlarge Google Ads screenshot: Demographic &amp; day-hour targeting" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/f29ad8d08788b286310b9a8f69d1f7d2.png" alt="Google Ads screenshot: Demographic &amp; day-hour targeting" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">GOOGLE ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Demographic &amp; day-hour targeting</span></div>
+</button>
+<button type="button" onClick="{{open4}}" aria-label="Enlarge Meta Ads screenshot: 650 leads · ₹13.04 per lead" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/71b483a0a8b590b3e07a7e5a4d577e8e.png" alt="Meta Ads screenshot: 650 leads · ₹13.04 per lead" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">650 leads · ₹13.04 per lead</span></div>
+</button>
+<button type="button" onClick="{{open5}}" aria-label="Enlarge Facebook Insights screenshot: 448,530 page views · Apr–Sep" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/09390313f796fcf486ffb8a1dc852c1c.png" alt="Facebook Insights screenshot: 448,530 page views · Apr–Sep" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">FACEBOOK INSIGHTS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">448,530 page views · Apr–Sep</span></div>
+</button>
+<button type="button" onClick="{{open6}}" aria-label="Enlarge Facebook Insights screenshot: 1,402,613 page views" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/a1b1448215504c1ead185db976d977f4.png" alt="Facebook Insights screenshot: 1,402,613 page views" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">FACEBOOK INSIGHTS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">1,402,613 page views</span></div>
+</button>
+<button type="button" onClick="{{open1}}" aria-label="Enlarge Google Ads screenshot: Venue search ad · 129 clicks in 7 days" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/774db9bc392c293b2afa053cb17b5f01.png" alt="Google Ads screenshot: Venue search ad · 129 clicks in 7 days" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">GOOGLE ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Venue search ad · 129 clicks in 7 days</span></div>
+</button>
+<button type="button" onClick="{{open2}}" aria-label="Enlarge Google Ads screenshot: 8.15k clicks · 57.3k impressions · 86 conversions" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/2b5bc409dab743fc95a41c385b2dde71.png" alt="Google Ads screenshot: 8.15k clicks · 57.3k impressions · 86 conversions" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">GOOGLE ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">8.15k clicks · 57.3k impressions · 86 conversions</span></div>
+</button>
+<button type="button" onClick="{{open3}}" aria-label="Enlarge Google Ads screenshot: Demographic &amp; day-hour targeting" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/f29ad8d08788b286310b9a8f69d1f7d2.png" alt="Google Ads screenshot: Demographic &amp; day-hour targeting" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">GOOGLE ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Demographic &amp; day-hour targeting</span></div>
+</button>
+<button type="button" onClick="{{open4}}" aria-label="Enlarge Meta Ads screenshot: 650 leads · ₹13.04 per lead" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/71b483a0a8b590b3e07a7e5a4d577e8e.png" alt="Meta Ads screenshot: 650 leads · ₹13.04 per lead" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">650 leads · ₹13.04 per lead</span></div>
+</button>
+<button type="button" onClick="{{open5}}" aria-label="Enlarge Facebook Insights screenshot: 448,530 page views · Apr–Sep" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/09390313f796fcf486ffb8a1dc852c1c.png" alt="Facebook Insights screenshot: 448,530 page views · Apr–Sep" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">FACEBOOK INSIGHTS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">448,530 page views · Apr–Sep</span></div>
+</button>
+<button type="button" onClick="{{open6}}" aria-label="Enlarge Facebook Insights screenshot: 1,402,613 page views" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/a1b1448215504c1ead185db976d977f4.png" alt="Facebook Insights screenshot: 1,402,613 page views" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">FACEBOOK INSIGHTS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">1,402,613 page views</span></div>
+</button>
+</div></div>
+<div style="overflow: hidden;"><div class="mq-r slowest" style="display: flex; gap: 20px; width: max-content;">
+<button type="button" onClick="{{open7}}" aria-label="Enlarge Facebook Insights screenshot: 195K views in 28 days · 3-sec views +82%" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/f5679919173d70ab5d11d728d1520385.png" alt="Facebook Insights screenshot: 195K views in 28 days · 3-sec views +82%" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">FACEBOOK INSIGHTS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">195K views in 28 days · 3-sec views +82%</span></div>
+</button>
+<button type="button" onClick="{{open8}}" aria-label="Enlarge Meta Ads screenshot: Video lead ads · last 30 days" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/0d337035e194d031c0bc20fa289c451c.png" alt="Meta Ads screenshot: Video lead ads · last 30 days" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Video lead ads · last 30 days</span></div>
+</button>
+<button type="button" onClick="{{open9}}" aria-label="Enlarge Meta Ads screenshot: 102 leads on one master campaign" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/c761c8165fa3d58bfa8bcbe80224861b.png" alt="Meta Ads screenshot: 102 leads on one master campaign" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">102 leads on one master campaign</span></div>
+</button>
+<button type="button" onClick="{{open10}}" aria-label="Enlarge Meta Ads screenshot: Divine Home India · 1,023 B2B leads at ₹13.65" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/81833f9f81bfceb72fbc8aaa7f68d582.png" alt="Meta Ads screenshot: Divine Home India · 1,023 B2B leads at ₹13.65" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Divine Home India · 1,023 B2B leads at ₹13.65</span></div>
+</button>
+<button type="button" onClick="{{open11}}" aria-label="Enlarge Meta Ads screenshot: Chandigarh &amp; Gurugram · 26 ads tested" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/621bf7a5471854f8183c4b761de55e47.png" alt="Meta Ads screenshot: Chandigarh &amp; Gurugram · 26 ads tested" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Chandigarh &amp; Gurugram · 26 ads tested</span></div>
+</button>
+<button type="button" onClick="{{open12}}" aria-label="Enlarge Meta Ads screenshot: Franchise Business Solution · lead ads" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/937d204f4fd5847159000f18cadfda3d.png" alt="Meta Ads screenshot: Franchise Business Solution · lead ads" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Franchise Business Solution · lead ads</span></div>
+</button>
+<button type="button" onClick="{{open7}}" aria-label="Enlarge Facebook Insights screenshot: 195K views in 28 days · 3-sec views +82%" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/f5679919173d70ab5d11d728d1520385.png" alt="Facebook Insights screenshot: 195K views in 28 days · 3-sec views +82%" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">FACEBOOK INSIGHTS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">195K views in 28 days · 3-sec views +82%</span></div>
+</button>
+<button type="button" onClick="{{open8}}" aria-label="Enlarge Meta Ads screenshot: Video lead ads · last 30 days" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/0d337035e194d031c0bc20fa289c451c.png" alt="Meta Ads screenshot: Video lead ads · last 30 days" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Video lead ads · last 30 days</span></div>
+</button>
+<button type="button" onClick="{{open9}}" aria-label="Enlarge Meta Ads screenshot: 102 leads on one master campaign" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/c761c8165fa3d58bfa8bcbe80224861b.png" alt="Meta Ads screenshot: 102 leads on one master campaign" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">102 leads on one master campaign</span></div>
+</button>
+<button type="button" onClick="{{open10}}" aria-label="Enlarge Meta Ads screenshot: Divine Home India · 1,023 B2B leads at ₹13.65" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/81833f9f81bfceb72fbc8aaa7f68d582.png" alt="Meta Ads screenshot: Divine Home India · 1,023 B2B leads at ₹13.65" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Divine Home India · 1,023 B2B leads at ₹13.65</span></div>
+</button>
+<button type="button" onClick="{{open11}}" aria-label="Enlarge Meta Ads screenshot: Chandigarh &amp; Gurugram · 26 ads tested" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/621bf7a5471854f8183c4b761de55e47.png" alt="Meta Ads screenshot: Chandigarh &amp; Gurugram · 26 ads tested" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Chandigarh &amp; Gurugram · 26 ads tested</span></div>
+</button>
+<button type="button" onClick="{{open12}}" aria-label="Enlarge Meta Ads screenshot: Franchise Business Solution · lead ads" style="width: 420px; flex-shrink: 0; padding: 0; text-align: left; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; color: #F7F3EC;">
+<div style="height: 230px; width: 100%; background: #FFFFFF; overflow: hidden;"><img src="./assets/937d204f4fd5847159000f18cadfda3d.png" alt="Meta Ads screenshot: Franchise Business Solution · lead ads" style="width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block;"></div>
+<div style="padding: 14px 18px 16px; display: flex; flex-direction: column; gap: 4px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: {{accent}}; letter-spacing: 0.08em;">META ADS · REAL ACCOUNT</span><span style="font-size: 15px; font-weight: 600;">Franchise Business Solution · lead ads</span></div>
+</button>
+</div></div>
+<p style="max-width: 1280px; margin: 10px auto 0; padding: 0 40px; box-sizing: border-box; width: 100%; font-size: 13px; color: #BFB6A8;">Screenshots cropped to hide account IDs and personal details.</p>
 </section>
 
-<section class="trust">
-  <div class="wrap">
-    <span class="trust-label">Real clients, real logos</span>
-    <div class="trust-wrap">
-      <div class="trust-track">
-        <div class="trust-chip"><img src="logos/fabindia.png" alt="Fabindia"></div>
-        <div class="trust-chip"><img src="logos/libas.png" alt="Libas"></div>
-        <div class="trust-chip"><img src="logos/om-books.png" alt="Om Books International"></div>
-        <div class="trust-chip"><img src="logos/avighna-steel.png" alt="Avighna Steel"></div>
-        <div class="trust-chip"><img src="logos/pet-foundry.png" alt="The Pet Foundry"></div>
-        <div class="trust-chip"><img src="logos/fbs.png" alt="Franchise Business Solution"></div>
-        <div class="trust-chip"><img src="logos/divine-home.png" alt="Divine Home India"></div>
-        <div class="trust-chip"><img src="logos/sri-sai.png" alt="Sri Sai Convention Hall"></div>
-        <div class="trust-chip"><img src="logos/community-chulha.png" alt="Community Chulha"></div>
-        <div class="trust-chip"><img src="logos/nakul-associates.png" alt="Nakul Associates"></div>
-        <div class="trust-chip"><img src="logos/fabindia.png" alt="Fabindia"></div>
-        <div class="trust-chip"><img src="logos/libas.png" alt="Libas"></div>
-        <div class="trust-chip"><img src="logos/om-books.png" alt="Om Books International"></div>
-        <div class="trust-chip"><img src="logos/avighna-steel.png" alt="Avighna Steel"></div>
-        <div class="trust-chip"><img src="logos/pet-foundry.png" alt="The Pet Foundry"></div>
-        <div class="trust-chip"><img src="logos/fbs.png" alt="Franchise Business Solution"></div>
-        <div class="trust-chip"><img src="logos/divine-home.png" alt="Divine Home India"></div>
-        <div class="trust-chip"><img src="logos/sri-sai.png" alt="Sri Sai Convention Hall"></div>
-        <div class="trust-chip"><img src="logos/community-chulha.png" alt="Community Chulha"></div>
-        <div class="trust-chip"><img src="logos/nakul-associates.png" alt="Nakul Associates"></div>
-      </div>
-    </div>
-  </div>
+<section id="creators" style="padding: 110px 0; display: flex; flex-direction: column; gap: 20px;">
+<div style="max-width: 1280px; margin: 0 auto 30px; padding: 0 40px; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; align-items: end;">
+<div style="display: flex; flex-direction: column; gap: 14px;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}; letter-spacing: 0.08em;">CREATOR NETWORK</span><h2 style="font-size: 64px; line-height: 1.0; font-weight: 800;">2,000+ creators. 500+ exclusive.</h2></div>
+<div style="display: flex; flex-direction: column; gap: 18px; align-items: flex-start;"><p style="font-size: 17px; line-height: 1.6; color: #BFB6A8;">Nano to celebrity, across beauty, food, tech, fashion and fitness. Matched on audience fit and past sales, not follower counts.</p><a href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20request%20your%20influencer%20list." style="background: {{accent}}; color: #16130F; font-weight: 700; padding: 14px 22px; border-radius: 999px;">Get the creator list on WhatsApp</a></div>
+</div>
+<div style="overflow: hidden;"><div class="mq-r slow" style="display: flex; gap: 16px; width: max-content;">
+<a href="https://www.instagram.com/arnicadqueen/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">A</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@arnicadqueen</span><span style="font-size: 13px; color: #BFB6A8;">Beauty · 101K</span></div></a>
+<a href="https://www.instagram.com/ridhimabhatia20/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">R</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@ridhimabhatia20</span><span style="font-size: 13px; color: #BFB6A8;">Skincare · 442K</span></div></a>
+<a href="https://www.instagram.com/destinywithfood/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">D</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@destinywithfood</span><span style="font-size: 13px; color: #BFB6A8;">Food · 83.9K</span></div></a>
+<a href="https://www.instagram.com/techxanmol/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">T</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@techxanmol</span><span style="font-size: 13px; color: #BFB6A8;">Tech · 64.8K</span></div></a>
+<a href="https://www.instagram.com/davoguecurly/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">D</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@davoguecurly</span><span style="font-size: 13px; color: #BFB6A8;">Fashion · 112K</span></div></a>
+<a href="https://www.instagram.com/candidlysheetal/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">C</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@candidlysheetal</span><span style="font-size: 13px; color: #BFB6A8;">Fitness · 107K</span></div></a>
+<a href="https://www.instagram.com/mrtechpedia/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">M</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@mrtechpedia</span><span style="font-size: 13px; color: #BFB6A8;">Tech · 87.5K</span></div></a>
+<a href="https://www.instagram.com/arnicadqueen/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">A</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@arnicadqueen</span><span style="font-size: 13px; color: #BFB6A8;">Beauty · 101K</span></div></a>
+<a href="https://www.instagram.com/ridhimabhatia20/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">R</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@ridhimabhatia20</span><span style="font-size: 13px; color: #BFB6A8;">Skincare · 442K</span></div></a>
+<a href="https://www.instagram.com/destinywithfood/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">D</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@destinywithfood</span><span style="font-size: 13px; color: #BFB6A8;">Food · 83.9K</span></div></a>
+<a href="https://www.instagram.com/techxanmol/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">T</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@techxanmol</span><span style="font-size: 13px; color: #BFB6A8;">Tech · 64.8K</span></div></a>
+<a href="https://www.instagram.com/davoguecurly/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">D</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@davoguecurly</span><span style="font-size: 13px; color: #BFB6A8;">Fashion · 112K</span></div></a>
+<a href="https://www.instagram.com/candidlysheetal/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">C</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@candidlysheetal</span><span style="font-size: 13px; color: #BFB6A8;">Fitness · 107K</span></div></a>
+<a href="https://www.instagram.com/mrtechpedia/" class="lift" style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #1A1714; border: 1px solid #2E2822; border-radius: 20px; padding: 20px; display: flex; align-items: center; gap: 14px; color: #F7F3EC;"><div style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; background: {{accent}}; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px; color: #16130F;">M</div><div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-weight: 600; font-size: 15px;">@mrtechpedia</span><span style="font-size: 13px; color: #BFB6A8;">Tech · 87.5K</span></div></a>
+</div></div>
 </section>
 
-<section id="about" class="sec sec--light">
-  <div class="wrap">
-    <span class="eyebrow">About</span>
-    <p class="about-lead reveal">One team — creators, paid media and CRM follow-up — run as one accountable system, priced on performance instead of padded retainers. No random shout-outs, no vanity reach. Every campaign is tracked against enquiries, orders and revenue.</p>
-
-    <div style="margin-top:64px;">
-      <span class="eyebrow">Investment</span>
-      <h2 class="sec-h2 reveal">A plan in your inbox within 48 hours.</h2>
-    </div>
-    <div class="invest-grid">
-      <div class="invest-card">
-        <span class="invest-tag">Starter · ₹1L–₹5L</span>
-        <div class="invest-band">Starter</div>
-        <div class="invest-desc">A first, focused proof of what creator-led growth does for one category.</div>
-        <ul><li>8–12 nano &amp; micro creators</li><li>Monthly reporting dashboard</li><li>One category focus</li></ul>
-      </div>
-      <div class="invest-card invest-card--featured">
-        <span class="invest-tag">Most booked · ₹5L–₹25L</span>
-        <div class="invest-band">Growth</div>
-        <div class="invest-desc">The system running for most active brands — creators, ads and optimisation together.</div>
-        <ul><li>15–25 creators, nano to mid-tier</li><li>Winning posts promoted as ads</li><li>Bi-weekly optimisation calls</li></ul>
-      </div>
-      <div class="invest-card">
-        <span class="invest-tag">Scaled · ₹25L+</span>
-        <div class="invest-band">Scaled</div>
-        <div class="invest-desc">Celebrity-tier reach and an always-on team for brands scaling across cities.</div>
-        <ul><li>Celebrity &amp; multi-city creators</li><li>Always-on always-live dashboard</li><li>Dedicated account pod</li></ul>
-      </div>
-    </div>
-  </div>
+<section id="contact" style="background: {{accent}}; color: #16130F; padding: 110px 0 36px;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; gap: 56px;">
+<div style="display: flex; flex-direction: column; gap: 30px;">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.08em;">HAVE A CAMPAIGN IN MIND?</span>
+<h2 style="font-size: 140px; line-height: 0.88; font-weight: 800; letter-spacing: -0.04em;">Your brand next.</h2>
+<div style="display: flex; gap: 14px; flex-wrap: wrap;">
+<a href="https://wa.me/919650618193?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." style="background: #16130F; color: #F7F3EC; font-weight: 700; font-size: 17px; padding: 20px 32px; border-radius: 999px;">Let's talk on WhatsApp →</a>
+<a href="mailto:growth@brandmarketian.com" style="border: 2px solid #16130F; color: #16130F; font-weight: 600; font-size: 17px; padding: 18px 30px; border-radius: 999px;">growth@brandmarketian.com</a>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 26px; border-top: 2px solid #16130F; font-size: 15px;">
+<div style="display: flex; align-items: center; gap: 14px;"><span style="font-family: 'Bricolage Grotesque', serif; font-weight: 800; font-size: 20px;">Brand Marketian</span><span>© 2026 · Delhi NCR, India</span></div>
+<div style="display: flex; gap: 26px; font-weight: 600;"><a href="tel:+919650618193" style="color: #16130F;">+91 96506 18193</a><a href="https://www.instagram.com/brand.marketian/" style="color: #16130F;">@brand.marketian</a><a href="https://brandmarketian.com/" style="color: #16130F;">brandmarketian.com ↗</a></div>
+</div>
+</div>
 </section>
 
-<footer class="footer" id="contact">
-  <div class="wrap">
-    <span class="eyebrow eyebrow--dark">Have A Campaign In Mind?</span>
-    <h2 class="footer-h">LET'S TALK ON WHATSAPP.</h2>
-    <div class="footer-row">
-      <a class="btn btn-orange" href="https://wa.me/919650618193?text=Hi%2C%20I%20have%20a%20campaign%20in%20mind%20%E2%80%94%20let%27s%20talk." target="_blank" rel="noopener">Let's Talk on WhatsApp <span class="arrow">→</span></a>
-      <div class="footer-contacts">
-        <a href="mailto:growth@brandmarketian.com"><span>Email</span>growth@brandmarketian.com</a>
-        <a href="tel:+919650618193"><span>Phone / WhatsApp</span>+91 96506 18193</a>
-        <a href="https://brandmarketian.com/" target="_blank" rel="noopener"><span>Website</span>brandmarketian.com ↗</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Brand Marketian. All rights reserved.</span>
-      <span>Influencer × Performance Marketing Studio, India</span>
-    </div>
-  </div>
-</footer>
-
-<a class="wa-float" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20request%20your%20influencer%2Fcreator%20list.%20Please%20share%20the%20relevant%20creators%20for%20my%20brand." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7A9.87 9.87 0 0 0 12.04 2zm5.82 14.09c-.25.7-1.24 1.3-2.02 1.46-.55.11-1.26.2-3.67-.79-3.08-1.27-5.06-4.4-5.22-4.6-.15-.21-1.24-1.65-1.24-3.15s.78-2.23 1.06-2.53c.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.09.92 2.24.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.07.18-.21.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>
-  <span class="wa-text"><span class="l1">Need creators?</span>Get the list →</span>
-</a>
-
-<script>
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* scroll reveal */
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-  if('IntersectionObserver' in window && !reduceMotion){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
-      });
-    }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
-    revealEls.forEach(function(el){ io.observe(el); });
-  } else {
-    revealEls.forEach(function(el){ el.classList.add('is-in'); });
+<sc-if value="{{show1}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/774db9bc392c293b2afa053cb17b5f01.png" alt="Google Ads screenshot: Venue search ad · 129 clicks in 7 days" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Google Ads · Venue search ad · 129 clicks in 7 days</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show2}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/2b5bc409dab743fc95a41c385b2dde71.png" alt="Google Ads screenshot: 8.15k clicks · 57.3k impressions · 86 conversions" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Google Ads · 8.15k clicks · 57.3k impressions · 86 conversions</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show3}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/f29ad8d08788b286310b9a8f69d1f7d2.png" alt="Google Ads screenshot: Demographic &amp; day-hour targeting" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Google Ads · Demographic &amp; day-hour targeting</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show4}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/71b483a0a8b590b3e07a7e5a4d577e8e.png" alt="Meta Ads screenshot: 650 leads · ₹13.04 per lead" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Meta Ads · 650 leads · ₹13.04 per lead</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show5}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/09390313f796fcf486ffb8a1dc852c1c.png" alt="Facebook Insights screenshot: 448,530 page views · Apr–Sep" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Facebook Insights · 448,530 page views · Apr–Sep</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show6}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/a1b1448215504c1ead185db976d977f4.png" alt="Facebook Insights screenshot: 1,402,613 page views" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Facebook Insights · 1,402,613 page views</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show7}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/f5679919173d70ab5d11d728d1520385.png" alt="Facebook Insights screenshot: 195K views in 28 days · 3-sec views +82%" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Facebook Insights · 195K views in 28 days · 3-sec views +82%</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show8}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/0d337035e194d031c0bc20fa289c451c.png" alt="Meta Ads screenshot: Video lead ads · last 30 days" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Meta Ads · Video lead ads · last 30 days</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show9}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/c761c8165fa3d58bfa8bcbe80224861b.png" alt="Meta Ads screenshot: 102 leads on one master campaign" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Meta Ads · 102 leads on one master campaign</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show10}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/81833f9f81bfceb72fbc8aaa7f68d582.png" alt="Meta Ads screenshot: Divine Home India · 1,023 B2B leads at ₹13.65" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Meta Ads · Divine Home India · 1,023 B2B leads at ₹13.65</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show11}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/621bf7a5471854f8183c4b761de55e47.png" alt="Meta Ads screenshot: Chandigarh &amp; Gurugram · 26 ads tested" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Meta Ads · Chandigarh &amp; Gurugram · 26 ads tested</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+<sc-if value="{{show12}}" hint-placeholder-val="{{false}}">
+<div style="position: fixed; inset: 0; z-index: 60; background: rgba(10,9,8,0.92); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 40px; box-sizing: border-box;">
+<img src="./assets/937d204f4fd5847159000f18cadfda3d.png" alt="Meta Ads screenshot: Franchise Business Solution · lead ads" style="max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 14px; background: #FFFFFF;">
+<div style="display: flex; align-items: center; gap: 20px; color: #F7F3EC;"><span style="font-size: 15px;">Meta Ads · Franchise Business Solution · lead ads</span><button type="button" onClick="{{closeShot}}" style="min-height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: {{accent}}; color: #16130F; font-weight: 700; font-size: 15px;">Close</button></div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF6600","options":["#FF6600","#F5B82E","#4ADE80","#60A5FA"]},"$preview":{"width":1440,"height":6400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { shot: 0 };
   }
-
-  /* count-up */
-  function formatNum(v, decimals){
-    if(decimals>0) return v.toFixed(decimals);
-    return Math.round(v).toLocaleString('en-IN');
-  }
-  function runCount(el){
-    var target = parseFloat(el.getAttribute('data-count'));
-    var decimals = parseInt(el.getAttribute('data-decimals')||'0', 10);
-    var prefix = el.getAttribute('data-prefix')||'';
-    var suffix = el.getAttribute('data-suffix')||'';
-    if(reduceMotion || isNaN(target)){
-      el.textContent = prefix + formatNum(target||0, decimals) + suffix;
-      return;
+  renderVals() {
+    const vals = { accent: this.props.accent ?? '#FF6600', closeShot: () => this.setState({ shot: 0 }) };
+    for (let i = 1; i <= 12; i++) {
+      vals['open' + i] = () => this.setState({ shot: i });
+      vals['show' + i] = this.state.shot === i;
     }
-    var start = null, dur = 1400;
-    function step(ts){
-      if(!start) start = ts;
-      var p = Math.min(1, (ts-start)/dur);
-      var eased = 1 - Math.pow(1-p, 3);
-      el.textContent = prefix + formatNum(target*eased, decimals) + suffix;
-      if(p<1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
+    return vals;
   }
-  var countEls = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
-  if('IntersectionObserver' in window){
-    var cio = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.isIntersecting){ runCount(en.target); cio.unobserve(en.target); }
-      });
-    }, {threshold:.4});
-    countEls.forEach(function(el){ cio.observe(el); });
-  } else {
-    countEls.forEach(runCount);
-  }
-
-  /* line graph draw-on-scroll */
-  var line = document.getElementById('perfLine');
-  if(line){
-    var len = line.getTotalLength();
-    line.style.strokeDasharray = len;
-    line.style.strokeDashoffset = len;
-    if(reduceMotion){ line.style.strokeDashoffset = 0; }
-    else {
-      var lio = new IntersectionObserver(function(entries){
-        entries.forEach(function(en){
-          if(en.isIntersecting){ line.style.strokeDashoffset = 0; lio.unobserve(en.target); }
-        });
-      }, {threshold:.4});
-      lio.observe(line);
-    }
-  }
-
-  /* mouse parallax on floating hero cards */
-  var hero = document.querySelector('.hero');
-  var cards = Array.prototype.slice.call(document.querySelectorAll('.float-card'));
-  var fine = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
-  if(hero && cards.length && fine && !reduceMotion){
-    var raf = null, mx = 0, my = 0;
-    hero.addEventListener('mousemove', function(e){
-      var r = hero.getBoundingClientRect();
-      mx = ((e.clientX - r.left) / r.width - .5) * 2;
-      my = ((e.clientY - r.top) / r.height - .5) * 2;
-      if(!raf){
-        raf = requestAnimationFrame(function(){
-          cards.forEach(function(c, i){
-            var depth = 6 + (i % 3) * 3;
-            var rot = parseFloat(c.getAttribute('data-rot') || '0');
-            c.style.transform = 'rotate(' + rot + 'deg) translate(' + (mx*depth) + 'px,' + (my*depth) + 'px)';
-          });
-          raf = null;
-        });
-      }
-    });
-  }
-
-  /* orbit: position cards around the ring, pause + enlarge on hover */
-  (function(){
-    var ring = document.getElementById('orbitRing');
-    if(!ring) return;
-    var cards = Array.prototype.slice.call(ring.querySelectorAll('.orbit-card'));
-    var radius = 300;
-    cards.forEach(function(c){
-      var ang = parseFloat(c.style.getPropertyValue('--ang')) || 0;
-      var rad = ang * Math.PI / 180;
-      var x = Math.cos(rad) * radius, y = Math.sin(rad) * radius;
-      c.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-    });
-    if(reduceMotion){ ring.classList.add('paused'); return; }
-    cards.forEach(function(c){
-      c.addEventListener('mouseenter', function(){ ring.classList.add('paused'); });
-      c.addEventListener('mouseleave', function(){ ring.classList.remove('paused'); });
-    });
-  })();
+}
 </script>
-
-</body></html>
+</body>
+</html>

@@ -1,0 +1,733 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+
+<!doctype html>
+<title>Brand Marketian — We Make Attention Perform</title>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0B0B;
+    --paper:#FAF8F4;
+    --orange:#FD6301;
+    --charcoal:#1B1B1B;
+    --grey:#A6A6A6;
+    --card:#ffffff;
+    --line:rgba(10,10,10,.12);
+    --line-dark:rgba(245,242,234,.14);
+    --r:6px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;margin:0;letter-spacing:-.02em;}
+  a{color:inherit;}
+  .num{font-variant-numeric:tabular-nums;}
+  .wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px);}
+  .accent{color:var(--orange);}
+  .sec{padding-block:clamp(64px,10vw,120px);}
+  .sec--light{background:var(--paper);color:var(--ink);}
+  .sec--dark{background:var(--charcoal);color:var(--paper);}
+  .sec-head{max-width:66ch;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:"Space Grotesk";font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink);opacity:.55;
+  }
+  .eyebrow--dark{color:var(--paper);opacity:.6;}
+  .sec-h2{font-size:clamp(30px,4.4vw,52px);font-weight:700;line-height:1.04;margin-top:16px;}
+
+  /* reveal + count-up */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i,0) * 90ms);}
+  .reveal.is-in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){ .reveal{transition:none;opacity:1;transform:none;} }
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:"Space Grotesk";font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;
+    padding:15px 26px;border-radius:var(--r);text-decoration:none;white-space:nowrap;
+    transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+  }
+  .btn .arrow{transition:transform .2s ease;}
+  .btn:hover .arrow{transform:translateX(5px);}
+  .btn-orange{background:var(--orange);color:var(--ink);border:1px solid var(--orange);}
+  .btn-orange:hover{background:transparent;color:var(--orange);}
+  .btn-outline{background:transparent;color:var(--paper);border:1px solid var(--line-dark);}
+  .btn-outline:hover{background:var(--orange);color:var(--ink);border-color:var(--orange);}
+  .btn-outline-ink{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .btn-outline-ink:hover{background:var(--ink);color:var(--orange);border-color:var(--ink);}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;background:rgba(10,10,10,.88);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:20px;flex-wrap:wrap;}
+  .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .nav-brand img{height:34px;width:34px;flex:none;}
+  .nav-brand span{font-family:"Space Grotesk";font-weight:700;font-size:15px;color:var(--paper);letter-spacing:-.01em;}
+  .nav-switch{display:flex;gap:4px;padding:4px;border:1px solid var(--line-dark);border-radius:999px;font-weight:600;font-size:15px;}
+  .nav-switch a{padding:9px 24px;border-radius:999px;color:var(--paper);text-decoration:none;transition:background .2s,color .2s;}
+  .nav-switch a:hover{color:var(--orange);}
+  .nav-switch a[aria-current]{background:var(--orange);color:var(--ink);}
+  .nav-switch a[aria-current]:hover{color:var(--ink);}
+  .nav-links{display:flex;gap:28px;flex-wrap:wrap;}
+  .nav-links a{
+    font-family:"Space Grotesk";font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--grey);text-decoration:none;transition:color .2s ease;
+  }
+  .nav-links a:hover{color:var(--orange);}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--ink);color:var(--paper);overflow:hidden;padding-block:clamp(72px,12vw,132px) clamp(120px,16vw,220px);}
+  .hero-inner{max-width:1240px;margin-inline:auto;padding-inline:clamp(20px,5vw,64px);position:relative;z-index:2;}
+  .hero-kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:"Space Grotesk";font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);
+  }
+  .hero-kicker::before{content:"";width:28px;height:1px;background:var(--orange);display:inline-block;}
+  .hero-h1{
+    margin-top:22px;font-size:clamp(52px,10.5vw,138px);line-height:.92;font-weight:700;
+    text-transform:uppercase;letter-spacing:-.03em;
+  }
+  .hero-h1 span{display:block;}
+  .hero-sub{
+    margin-top:26px;font-family:"Space Grotesk";font-size:clamp(15px,1.6vw,20px);font-weight:500;color:var(--grey);
+    letter-spacing:.01em;
+  }
+  .hero-actions{margin-top:38px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .hero-note{font-size:12.5px;color:var(--grey);}
+
+  .float-cards{position:absolute;inset:0;z-index:1;pointer-events:none;}
+  .float-card{
+    position:absolute;pointer-events:auto;
+    background:var(--charcoal);border:1px solid var(--line-dark);border-radius:var(--r);
+    padding:14px 18px;min-width:150px;
+    will-change:transform;
+  }
+  .float-card .fc-v{display:block;font-family:"Space Grotesk";font-weight:700;font-size:24px;color:var(--orange);}
+  .float-card .fc-l{display:block;font-size:11px;color:var(--grey);margin-top:3px;letter-spacing:.02em;}
+  .fc1{top:6%;right:6%;transform:rotate(-3deg);}
+  .fc2{top:38%;right:1%;transform:rotate(2deg);}
+  .fc3{top:66%;right:14%;transform:rotate(-2deg);}
+  .fc4{top:14%;right:32%;transform:rotate(3deg);}
+  .fc5{top:80%;right:38%;transform:rotate(-4deg);}
+  @media (max-width:980px){
+    .float-cards{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:44px;}
+    .float-card{position:static !important;transform:none !important;}
+  }
+
+  /* ---------- marquee ---------- */
+  .marquee{background:var(--ink);border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);overflow:hidden;padding-block:0;}
+  .mq-row{overflow:hidden;padding-block:16px;}
+  .mq-row.alt{padding-block:12px;border-top:1px solid var(--line-dark);}
+  .mq-track{display:flex;align-items:center;gap:28px;width:max-content;white-space:nowrap;animation:mq-l 28s linear infinite;}
+  .mq-row.alt .mq-track{animation:mq-r 34s linear infinite;}
+  .mq-track span{color:var(--orange);}
+  .mq-row.alt .mq-track{color:var(--grey);}
+  .mq-row.alt .mq-track b{color:var(--paper);font-weight:600;}
+  .mq-row:not(.alt) .mq-track{font-family:"Space Grotesk";font-size:clamp(22px,3.6vw,40px);font-weight:700;text-transform:uppercase;color:var(--paper);}
+  .mq-row.alt .mq-track{font-family:"Space Grotesk";font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+  @keyframes mq-l{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @keyframes mq-r{ from{transform:translateX(-50%);} to{transform:translateX(0);} }
+  @media (prefers-reduced-motion:reduce){ .mq-track{animation:none;} }
+
+  /* ---------- stat row ---------- */
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:56px;background:var(--line);border:1px solid var(--line);}
+  @media (max-width:900px){ .stat-row{grid-template-columns:repeat(2,1fr);} }
+  .stat{background:var(--paper);padding:28px 24px;}
+  .stat-v{display:block;font-family:"Space Grotesk";font-size:clamp(40px,5vw,64px);font-weight:700;line-height:1;}
+  .stat-l{display:block;margin-top:10px;font-size:13px;color:var(--ink);opacity:.6;line-height:1.5;}
+  .stat-l small{display:block;font-size:11.5px;opacity:.85;margin-top:2px;}
+
+  /* ---------- creator orbit ---------- */
+  .orbit-wrap{position:relative;margin-top:64px;display:flex;align-items:center;justify-content:center;}
+  .orbit{
+    position:relative;width:min(720px,100%);aspect-ratio:1/1;margin-inline:auto;
+    border-radius:50%;border:1px dashed var(--line);
+  }
+  .orbit-center{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:20px;
+  }
+  .orbit-center .oc-v{font-family:"Space Grotesk";font-weight:700;font-size:clamp(30px,4vw,46px);line-height:1;}
+  .orbit-center .oc-l{font-family:"Space Grotesk";font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);opacity:.55;margin-top:10px;max-width:16ch;}
+  .orbit-ring{
+    position:absolute;inset:0;animation:orbit-spin 70s linear infinite;
+  }
+  .orbit-ring.paused{animation-play-state:paused;}
+  @keyframes orbit-spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  .orbit-card{
+    position:absolute;top:50%;left:50%;width:150px;margin-top:-64px;margin-left:-75px;
+    transform-origin:75px 64px;
+  }
+  .oc-spin{
+    animation:counter-spin 70s linear infinite;
+  }
+  .orbit-ring.paused .oc-spin{animation-play-state:paused;}
+  @keyframes counter-spin{ from{transform:rotate(0deg);} to{transform:rotate(-360deg);} }
+  .orbit-card a{
+    display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+    overflow:hidden;text-decoration:none;color:var(--ink);
+    transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s ease;
+  }
+  .orbit-card .oimg{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--charcoal);}
+  .orbit-card .oimg img{width:100%;height:100%;object-fit:cover;}
+  .orbit-card .ocap{padding:9px 11px;}
+  .orbit-card .ocap b{display:block;font-family:"Space Grotesk";font-size:12px;font-weight:700;}
+  .orbit-card .ocap span{display:block;font-size:10.5px;color:var(--ink);opacity:.55;margin-top:2px;}
+  .orbit-card:hover a{transform:scale(1.12);border-color:var(--orange);z-index:5;position:relative;}
+  @media (max-width:760px){
+    .orbit{display:none;}
+    .orbit-mobile{display:grid !important;}
+  }
+  .orbit-mobile{display:none;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:56px;}
+  .orbit-mobile a{
+    display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink);
+  }
+  .orbit-mobile .oimg{aspect-ratio:1/1;overflow:hidden;background:var(--charcoal);}
+  .orbit-mobile .oimg img{width:100%;height:100%;object-fit:cover;}
+  .orbit-mobile .ocap{padding:9px 11px;}
+  .orbit-mobile .ocap b{display:block;font-family:"Space Grotesk";font-size:12px;font-weight:700;}
+  .orbit-mobile .ocap span{display:block;font-size:10.5px;opacity:.55;margin-top:2px;}
+
+  /* ---------- performance kpis + graph ---------- */
+  .perf-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;margin-top:56px;align-items:start;}
+  @media (max-width:900px){ .perf-grid{grid-template-columns:1fr;} }
+  .perf-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);}
+  .pk{background:var(--ink);padding:22px;}
+  .pk--accent{background:var(--charcoal);}
+  .pk-v{display:block;font-family:"Space Grotesk";font-size:clamp(26px,3vw,34px);font-weight:700;color:var(--paper);}
+  .pk--accent .pk-v{color:var(--orange);}
+  .pk-l{display:block;margin-top:6px;font-size:11.5px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;}
+  .perf-graph{background:var(--ink);border:1px solid var(--line-dark);border-radius:var(--r);padding:24px;}
+  .perf-graph svg{width:100%;height:auto;display:block;}
+  .draw-line{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.22,1,.36,1);}
+  .perf-graph-labels{display:flex;justify-content:space-between;margin-top:14px;font-family:"Space Grotesk";font-size:12px;color:var(--grey);}
+  .perf-graph-labels b{color:var(--paper);}
+  .perf-shots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+  @media (max-width:760px){ .perf-shots{grid-template-columns:1fr;} }
+  .perf-shots figure{margin:0;border:1px solid var(--line-dark);border-radius:var(--r);overflow:hidden;background:var(--ink);}
+  .perf-shots img{width:100%;height:auto;display:block;}
+  .perf-shots figcaption{padding:10px 14px;font-size:11.5px;color:var(--grey);border-top:1px solid var(--line-dark);}
+
+  /* ---------- attention -> influence -> performance -> results strip ---------- */
+  .story{background:var(--ink);color:var(--paper);padding-block:56px;overflow:hidden;}
+  .story-track{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;}
+  .story-word{
+    font-family:"Space Grotesk";font-weight:700;font-size:clamp(20px,3.2vw,38px);text-transform:uppercase;
+    letter-spacing:-.01em;
+  }
+  .story-word.on{color:var(--orange);}
+  .story-arrow{color:var(--grey);font-size:clamp(16px,2vw,24px);}
+
+  /* ---------- case studies ---------- */
+  .case{border-top:1px solid var(--line);padding-block:56px;position:relative;}
+  .case:first-of-type{border-top:none;}
+  .case-num{
+    position:absolute;top:8px;right:0;font-family:"Space Grotesk";font-weight:700;
+    font-size:clamp(80px,10vw,160px);line-height:1;color:var(--ink);opacity:.05;pointer-events:none;user-select:none;
+  }
+  .case-head{position:relative;z-index:1;max-width:72ch;}
+  .case-cat{
+    font-family:"Space Grotesk";font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink);background:var(--orange);display:inline-block;padding:4px 10px;border-radius:3px;
+  }
+  .case-title{margin-top:16px;font-size:clamp(24px,3.2vw,38px);font-weight:700;}
+  .case-csr{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px;max-width:100ch;}
+  @media (max-width:840px){ .case-csr{grid-template-columns:1fr;} }
+  .case-csr div b{
+    font-family:"Space Grotesk";font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink);opacity:.5;display:block;margin-bottom:8px;
+  }
+  .case-csr div p{margin:0;font-size:14.5px;line-height:1.65;color:var(--ink);}
+  .case-results{display:flex;flex-wrap:wrap;gap:48px;margin-top:40px;padding-top:32px;border-top:1px solid var(--line);}
+  .case-results div{min-width:140px;}
+  .res-v{display:block;font-family:"Space Grotesk";font-size:clamp(44px,5.6vw,72px);font-weight:700;line-height:1;}
+  .res-l{display:block;margin-top:8px;font-size:13px;color:var(--ink);opacity:.6;max-width:22ch;line-height:1.4;}
+
+  /* ---------- results wall ---------- */
+  .results-wall{background:var(--ink);color:var(--paper);padding-block:clamp(72px,10vw,120px);}
+  .rw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-dark);border:1px solid var(--line-dark);margin-top:16px;}
+  @media (max-width:840px){ .rw-grid{grid-template-columns:repeat(2,1fr);} }
+  .rw-cell{background:var(--ink);padding:36px 24px;}
+  .rw-v{font-family:"Space Grotesk";font-weight:700;font-size:clamp(40px,6vw,88px);line-height:1;color:var(--orange);}
+  .rw-l{margin-top:12px;font-size:13px;color:var(--grey);line-height:1.5;max-width:24ch;}
+
+  /* ---------- trust strip (logos) ---------- */
+  .trust{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:44px;}
+  .trust-label{font-family:"Space Grotesk";font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:.5;}
+  .trust-wrap{margin-top:24px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .trust-track{display:flex;align-items:center;gap:16px;width:max-content;animation:mq-l 30s linear infinite;}
+  .trust-chip{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 26px;display:flex;align-items:center;justify-content:center;height:64px;flex:none;}
+  .trust-chip img{height:30px;width:auto;max-width:150px;object-fit:contain;}
+
+  /* ---------- about + investment ---------- */
+  .about-lead{font-size:clamp(20px,2.6vw,28px);font-weight:500;color:var(--ink);line-height:1.5;max-width:52ch;margin-top:20px;font-family:"Space Grotesk";}
+  .invest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px;}
+  @media (max-width:840px){ .invest-grid{grid-template-columns:1fr;} }
+  .invest-card{background:var(--paper);padding:32px 28px;position:relative;}
+  .invest-card--featured{background:var(--ink);color:var(--paper);}
+  .invest-tag{font-family:"Space Grotesk";font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.55;}
+  .invest-band{font-family:"Space Grotesk";font-size:28px;font-weight:700;margin-top:14px;}
+  .invest-card--featured .invest-band{color:var(--orange);}
+  .invest-name{font-size:14px;font-weight:600;margin-top:6px;}
+  .invest-desc{font-size:13px;opacity:.65;line-height:1.6;margin-top:8px;}
+  .invest-card ul{list-style:none;margin:22px 0 0;padding:20px 0 0;border-top:1px solid var(--line);font-size:13px;line-height:1.9;opacity:.85;}
+  .invest-card--featured ul{border-top-color:var(--line-dark);}
+  .invest-card ul li{position:relative;padding-left:20px;}
+  .invest-card ul li::before{content:"→";position:absolute;left:0;color:var(--orange);font-weight:700;}
+  .invest-card--featured{}
+
+  /* ---------- footer ---------- */
+  .footer{background:var(--ink);color:var(--paper);padding-block:clamp(64px,9vw,100px) 32px;}
+  .footer-h{font-size:clamp(34px,5.2vw,64px);font-weight:700;max-width:16ch;text-transform:uppercase;}
+  .footer-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-top:32px;}
+  .footer-contacts{display:flex;flex-direction:column;gap:14px;}
+  .footer-contacts a{
+    font-family:"Space Grotesk";font-weight:600;font-size:16px;text-decoration:none;color:var(--paper);
+    display:flex;flex-direction:column;gap:2px;
+  }
+  .footer-contacts a span{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.08em;font-family:"Inter";font-weight:600;}
+  .footer-contacts a:hover{color:var(--orange);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    margin-top:56px;padding-top:22px;border-top:1px solid var(--line-dark);
+    font-size:12px;color:var(--grey);
+  }
+
+  /* ---------- floating whatsapp ---------- */
+  .wa-float{
+    position:fixed;right:18px;bottom:18px;z-index:60;
+    display:flex;align-items:center;gap:10px;
+    background:var(--orange);color:#fff;text-decoration:none;
+    border-radius:999px;padding:13px 16px;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);
+  }
+  .wa-float svg{width:20px;height:20px;flex:none;}
+  .wa-float .wa-text{font-family:"Space Grotesk";font-weight:700;font-size:12.5px;letter-spacing:.01em;white-space:nowrap;}
+  .wa-float .wa-text .l1{display:block;opacity:.85;font-size:10px;text-transform:uppercase;letter-spacing:.06em;}
+  @media (max-width:640px){ .wa-float .wa-text .l1{display:none;} }
+</style>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-brand" href="#top">
+      <img src="logos/marketian-mark.png" alt="">
+      <span>Brand Marketian</span>
+    </a>
+    <div class="nav-switch" role="navigation" aria-label="Portfolio sections"><a href="/">Performance</a><a href="/influencer" aria-current="page">Influencer</a></div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <span class="hero-kicker">Influencer Marketing × Performance Marketing</span>
+    <h1 class="hero-h1">
+      <span class="reveal" style="--i:0">WE TURN</span>
+      <span class="reveal" style="--i:1">ATTENTION</span>
+      <span class="reveal accent" style="--i:2">INTO RESULTS.</span>
+    </h1>
+    <p class="hero-sub reveal" style="--i:3">Creator campaigns, paid media and growth strategies built to make brands impossible to ignore.</p>
+    <div class="hero-actions reveal" style="--i:4">
+      <a class="btn btn-orange" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20request%20your%20influencer%2Fcreator%20list.%20Please%20share%20the%20relevant%20creators%20for%20my%20brand." target="_blank" rel="noopener">Request Influencer List <span class="arrow">↗</span></a>
+      <a class="btn btn-outline" href="#work">View Our Work <span class="arrow">→</span></a>
+    </div>
+    <p class="hero-note reveal" style="--i:5;margin-top:16px;">2,000+ creator network · Real accounts, real numbers</p>
+  </div>
+  <div class="float-cards" id="floatCards">
+    <div class="float-card fc1" data-rot="-3"><span class="fc-v" data-count="650">0</span><span class="fc-l">Leads · ₹13.04 CPL, Meta Ads</span></div>
+    <div class="float-card fc2" data-rot="2"><span class="fc-v" data-prefix="₹" data-count="100" data-suffix="Cr+">0</span><span class="fc-l">Pipeline built, franchise client</span></div>
+    <div class="float-card fc3" data-rot="-2"><span class="fc-v" data-count="524" data-suffix="K">0</span><span class="fc-l">Reel views, OPPO F29 5G launch</span></div>
+    <div class="float-card fc4" data-rot="3"><span class="fc-v" data-count="2000" data-suffix="+">0</span><span class="fc-l">Creators in the network</span></div>
+    <div class="float-card fc5" data-rot="-4"><span class="fc-v" data-count="52" data-suffix="×">0</span><span class="fc-l">Cheaper cost/lead, Meta vs Google</span></div>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="mq-row">
+    <div class="mq-track">INFLUENCERS <span>→</span> CONTENT <span>→</span> PERFORMANCE <span>→</span> SCALE <span>→</span> RESULTS <span>→</span> INFLUENCERS <span>→</span> CONTENT <span>→</span> PERFORMANCE <span>→</span> SCALE <span>→</span> RESULTS <span>→</span></div>
+  </div>
+  <div class="mq-row alt">
+    <div class="mq-track"><b>META ADS</b> <span>•</span> <b>GOOGLE ADS</b> <span>•</span> <b>CREATOR CAMPAIGNS</b> <span>•</span> <b>UGC</b> <span>•</span> <b>RETARGETING</b> <span>•</span> <b>META ADS</b> <span>•</span> <b>GOOGLE ADS</b> <span>•</span> <b>CREATOR CAMPAIGNS</b> <span>•</span> <b>UGC</b> <span>•</span> <b>RETARGETING</b> <span>•</span></div>
+  </div>
+</div>
+
+<section id="influencer" class="sec sec--light">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">01 — Influencer Marketing</span>
+      <h2 class="sec-h2 reveal">Creators who move product,<br><span style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--orange);text-decoration-thickness:4px;">not just impressions.</span></h2>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat reveal" style="--i:0"><span class="stat-v" data-count="2000" data-suffix="+">0</span><span class="stat-l">Creators Activated<small>500+ exclusive to the network</small></span></div>
+      <div class="stat reveal" style="--i:1"><span class="stat-v" data-count="1" data-suffix="M+">0</span><span class="stat-l">Combined Reach<small>across creators featured on this page</small></span></div>
+      <div class="stat reveal" style="--i:2"><span class="stat-v" data-count="2.8" data-decimals="1" data-suffix="%">0</span><span class="stat-l">Avg. Engagement<small>Tech category, real database</small></span></div>
+      <div class="stat reveal" style="--i:3"><span class="stat-v" data-count="8">0</span><span class="stat-l">Profiles Verified<small>700+ more on request</small></span></div>
+    </div>
+
+    <div class="orbit-wrap">
+      <div class="orbit" id="orbit">
+        <div class="orbit-center reveal">
+          <span class="oc-v num" data-count="2000" data-suffix="+">0</span>
+          <span class="oc-l">Creators Ready to Activate</span>
+        </div>
+        <div class="orbit-ring" id="orbitRing">
+          <div class="orbit-card" style="--ang:0deg;"><div class="oc-spin"><a href="https://www.instagram.com/arnicadqueen/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/arnicadqueen-oppo.png" alt="arnicadqueen" loading="lazy"></div><div class="ocap"><b>@arnicadqueen</b><span>Beauty · 101K · 524K views</span></div></a></div></div>
+          <div class="orbit-card" style="--ang:51deg;"><div class="oc-spin"><a href="https://www.instagram.com/ridhimabhatia20/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/ridhimabhatia20-skincare.png" alt="ridhimabhatia20" loading="lazy"></div><div class="ocap"><b>@ridhimabhatia20</b><span>Skincare · 442K followers</span></div></a></div></div>
+          <div class="orbit-card" style="--ang:102deg;"><div class="oc-spin"><a href="https://www.instagram.com/destinywithfood/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/destinywithfood-idli.png" alt="destinywithfood" loading="lazy"></div><div class="ocap"><b>@destinywithfood</b><span>Food · 83.9K followers</span></div></a></div></div>
+          <div class="orbit-card" style="--ang:153deg;"><div class="oc-spin"><a href="https://www.instagram.com/techxanmol/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/techxanmol-vivo.png" alt="techxanmol" loading="lazy"></div><div class="ocap"><b>@techxanmol</b><span>Tech · 64.8K followers</span></div></a></div></div>
+          <div class="orbit-card" style="--ang:204deg;"><div class="oc-spin"><a href="https://www.instagram.com/davoguecurly/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/davoguecurly-makeup.png" alt="davoguecurly" loading="lazy"></div><div class="ocap"><b>@davoguecurly</b><span>Fashion · 112K followers</span></div></a></div></div>
+          <div class="orbit-card" style="--ang:255deg;"><div class="oc-spin"><a href="https://www.instagram.com/candidlysheetal/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/candidlysheetal-dove.png" alt="candidlysheetal" loading="lazy"></div><div class="ocap"><b>@candidlysheetal</b><span>Fitness · 107K followers</span></div></a></div></div>
+          <div class="orbit-card" style="--ang:306deg;"><div class="oc-spin"><a href="https://www.instagram.com/mrtechpedia/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/mrtechpedia-iphone.png" alt="mrtechpedia" loading="lazy"></div><div class="ocap"><b>@mrtechpedia</b><span>Tech · 87.5K followers</span></div></a></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="orbit-mobile">
+      <a href="https://www.instagram.com/arnicadqueen/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/arnicadqueen-oppo.png" alt="arnicadqueen" loading="lazy"></div><div class="ocap"><b>@arnicadqueen</b><span>524K reel views</span></div></a>
+      <a href="https://www.instagram.com/ridhimabhatia20/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/ridhimabhatia20-skincare.png" alt="ridhimabhatia20" loading="lazy"></div><div class="ocap"><b>@ridhimabhatia20</b><span>442K followers</span></div></a>
+      <a href="https://www.instagram.com/destinywithfood/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/destinywithfood-idli.png" alt="destinywithfood" loading="lazy"></div><div class="ocap"><b>@destinywithfood</b><span>83.9K followers</span></div></a>
+      <a href="https://www.instagram.com/davoguecurly/" target="_blank" rel="noopener"><div class="oimg"><img src="creators/davoguecurly-makeup.png" alt="davoguecurly" loading="lazy"></div><div class="ocap"><b>@davoguecurly</b><span>112K followers</span></div></a>
+    </div>
+
+    <div style="margin-top:56px;">
+      <a class="btn btn-outline-ink" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20get%20your%20creator%20list%20on%20WhatsApp%20%E2%80%94%20niche%2C%20city%2C%20followers%20and%20engagement." target="_blank" rel="noopener">Get Creator List on WhatsApp <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="story">
+  <div class="wrap story-track">
+    <span class="story-word on reveal" style="--i:0">ATTENTION</span>
+    <span class="story-arrow reveal" style="--i:1">→</span>
+    <span class="story-word reveal" style="--i:2">INFLUENCE</span>
+    <span class="story-arrow reveal" style="--i:3">→</span>
+    <span class="story-word reveal" style="--i:4">PERFORMANCE</span>
+    <span class="story-arrow reveal" style="--i:5">→</span>
+    <span class="story-word on reveal" style="--i:6">RESULTS</span>
+  </div>
+</div>
+
+<section id="performance" class="sec sec--dark">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow eyebrow--dark">02 — Performance Marketing</span>
+      <h2 class="sec-h2 reveal" style="color:var(--paper);">Every rupee tracked.<br><span class="accent">Every lead accountable.</span></h2>
+    </div>
+
+    <div class="perf-grid">
+      <div class="perf-kpis reveal" style="--i:0">
+        <div class="pk"><span class="pk-v" data-prefix="₹" data-count="58.8" data-decimals="1" data-suffix="K">0</span><span class="pk-l">Ad Spend</span></div>
+        <div class="pk"><span class="pk-v" data-count="57.3" data-decimals="1" data-suffix="K">0</span><span class="pk-l">Impressions</span></div>
+        <div class="pk"><span class="pk-v" data-count="8.15" data-decimals="2" data-suffix="K">0</span><span class="pk-l">Clicks</span></div>
+        <div class="pk"><span class="pk-v" data-count="86">0</span><span class="pk-l">Leads</span></div>
+        <div class="pk"><span class="pk-v" data-prefix="₹" data-count="683.72" data-decimals="2">0</span><span class="pk-l">Cost / Lead</span></div>
+        <div class="pk pk--accent"><span class="pk-v" data-count="52" data-suffix="×">0</span><span class="pk-l">Cheaper CPL on Meta</span></div>
+      </div>
+      <div class="perf-graph reveal" style="--i:1">
+        <svg viewBox="0 0 400 190" role="img" aria-label="Cost per lead, Google Ads compared with Meta Ads">
+          <path class="draw-line" id="perfLine" d="M20,26 C160,26 240,150 380,150"/>
+          <circle cx="20" cy="26" r="5" fill="var(--paper)"/>
+          <circle cx="380" cy="150" r="5" fill="var(--orange)"/>
+        </svg>
+        <div class="perf-graph-labels">
+          <span><b>Google Ads</b> · ₹683.72 / lead</span>
+          <span><b>Meta Ads</b> · ₹13.04 / lead</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="perf-shots reveal" style="--i:2">
+      <figure>
+        <img src="dashboards/google-ads-overview.png" alt="Real Google Ads overview: 8.15k clicks, 57.3k impressions, 86 conversions, ₹58.8k cost" loading="lazy">
+        <figcaption>Google Ads · real account screenshot</figcaption>
+      </figure>
+      <figure>
+        <img src="dashboards/meta-leads-table.png" alt="Real Meta Ads leads table: 650 leads across 6 ads, ₹13.04 average cost per lead" loading="lazy">
+        <figcaption>Meta Ads · real account screenshot</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="sec sec--light">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Case Studies</span>
+      <h2 class="sec-h2 reveal">The work, not the pitch.</h2>
+    </div>
+
+    <div class="case">
+      <span class="case-num">01</span>
+      <div class="case-head reveal">
+        <span class="case-cat">Influencer Campaign</span>
+        <h3 class="case-title">@arnicadqueen × OPPO F29 5G</h3>
+      </div>
+      <div class="case-csr reveal" style="--i:1">
+        <div><b>Challenge</b><p>OPPO's F29 5G launch needed authentic reach inside a beauty-meets-tech audience — not another paid banner nobody remembers.</p></div>
+        <div><b>Strategy</b><p>Match with a creator whose own bio already reads "worked with 300+ brands," with a genuine beauty · fashion · tech crossover following, and track proof directly against her live profile.</p></div>
+        <div><b>Execution</b><p>One sponsored Reel for the F29 5G launch, sitting alongside her existing organic collabs with Faces Canada, ibis Hotels and AGARO.</p></div>
+      </div>
+      <div class="case-results reveal" style="--i:2">
+        <div><span class="res-v num" data-count="524" data-suffix="K">0</span><span class="res-l">Reel views, verified live on profile</span></div>
+        <div><span class="res-v num" data-count="101" data-suffix="K">0</span><span class="res-l">Followers</span></div>
+        <div><span class="res-v num" data-count="4">0</span><span class="res-l">Existing brand collabs as trust signal</span></div>
+      </div>
+    </div>
+
+    <div class="case">
+      <span class="case-num">02</span>
+      <div class="case-head reveal">
+        <span class="case-cat">Performance Marketing</span>
+        <h3 class="case-title">Sri Sai Convention Hall</h3>
+      </div>
+      <div class="case-csr reveal" style="--i:1">
+        <div><b>Challenge</b><p>A Jayanagar wedding &amp; function hall needed enquiry volume, not brand awareness — pure lead generation, tracked to the rupee.</p></div>
+        <div><b>Strategy</b><p>Run Google Ads and Meta Lead Ads in parallel, optimising purely for cost per qualified lead across both channels.</p></div>
+        <div><b>Execution</b><p>A Google Ads campaign (Apr '25 – Sept '26) alongside a 6-ad Meta Lead Ads set, both screenshotted live from the real ad accounts.</p></div>
+      </div>
+      <div class="case-results reveal" style="--i:2">
+        <div><span class="res-v num" data-count="736">0</span><span class="res-l">Total leads, Google + Meta combined</span></div>
+        <div><span class="res-v num" data-prefix="₹" data-count="683.72" data-decimals="2">0</span><span class="res-l">Cost / lead, Google Ads</span></div>
+        <div><span class="res-v num" data-count="52" data-suffix="×">0</span><span class="res-l">Cheaper cost / lead on Meta (₹13.04)</span></div>
+      </div>
+    </div>
+
+    <div class="case">
+      <span class="case-num">03</span>
+      <div class="case-head reveal">
+        <span class="case-cat">Growth Story</span>
+        <h3 class="case-title">Divine Home India</h3>
+      </div>
+      <div class="case-csr reveal" style="--i:1">
+        <div><b>Challenge</b><p>A Delhi décor label needed a functioning B2B sales pipeline from zero — three months, offline-only, no existing brand presence.</p></div>
+        <div><b>Strategy</b><p>Build the brand from scratch and put every conversation toward closing wholesale and direct-buyer deals rather than growing followers.</p></div>
+        <div><b>Execution</b><p>Offline relationship-building and direct outreach only — no paid channel run yet, by design, three months post-launch.</p></div>
+      </div>
+      <div class="case-results reveal" style="--i:2">
+        <div><span class="res-v num" data-prefix="₹" data-count="30" data-suffix="L">0</span><span class="res-l">B2B deal already closed</span></div>
+        <div><span class="res-v num" data-prefix="₹" data-count="80" data-suffix="L">0</span><span class="res-l">Pipeline targeted by Diwali</span></div>
+        <div><span class="res-v num" data-count="3">0</span><span class="res-l">Months since launch, offline-only</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="results-wall">
+  <div class="wrap">
+    <span class="eyebrow eyebrow--dark">Results, Not Adjectives</span>
+    <div class="rw-grid">
+      <div class="rw-cell reveal" style="--i:0"><div class="rw-v num" data-prefix="₹" data-count="100" data-suffix="Cr+">0</div><div class="rw-l">Pipeline built for a single franchise consulting client, from scratch</div></div>
+      <div class="rw-cell reveal" style="--i:1"><div class="rw-v num" data-count="650">0</div><div class="rw-l">Leads generated, one Meta campaign — ₹13.04 avg. cost per lead</div></div>
+      <div class="rw-cell reveal" style="--i:2"><div class="rw-v num" data-prefix="₹" data-count="30" data-suffix="L">0</div><div class="rw-l">B2B deal closed in 3 months, offline-only — Divine Home India</div></div>
+      <div class="rw-cell reveal" style="--i:3"><div class="rw-v num" data-count="2000" data-suffix="+">0</div><div class="rw-l">Creators in the working network — 500+ exclusive to Brand Marketian</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <span class="trust-label">Real clients, real logos</span>
+    <div class="trust-wrap">
+      <div class="trust-track">
+        <div class="trust-chip"><img src="logos/fabindia.png" alt="Fabindia"></div>
+        <div class="trust-chip"><img src="logos/libas.png" alt="Libas"></div>
+        <div class="trust-chip"><img src="logos/om-books.png" alt="Om Books International"></div>
+        <div class="trust-chip"><img src="logos/avighna-steel.png" alt="Avighna Steel"></div>
+        <div class="trust-chip"><img src="logos/pet-foundry.png" alt="The Pet Foundry"></div>
+        <div class="trust-chip"><img src="logos/fbs.png" alt="Franchise Business Solution"></div>
+        <div class="trust-chip"><img src="logos/divine-home.png" alt="Divine Home India"></div>
+        <div class="trust-chip"><img src="logos/sri-sai.png" alt="Sri Sai Convention Hall"></div>
+        <div class="trust-chip"><img src="logos/community-chulha.png" alt="Community Chulha"></div>
+        <div class="trust-chip"><img src="logos/nakul-associates.png" alt="Nakul Associates"></div>
+        <div class="trust-chip"><img src="logos/fabindia.png" alt="Fabindia"></div>
+        <div class="trust-chip"><img src="logos/libas.png" alt="Libas"></div>
+        <div class="trust-chip"><img src="logos/om-books.png" alt="Om Books International"></div>
+        <div class="trust-chip"><img src="logos/avighna-steel.png" alt="Avighna Steel"></div>
+        <div class="trust-chip"><img src="logos/pet-foundry.png" alt="The Pet Foundry"></div>
+        <div class="trust-chip"><img src="logos/fbs.png" alt="Franchise Business Solution"></div>
+        <div class="trust-chip"><img src="logos/divine-home.png" alt="Divine Home India"></div>
+        <div class="trust-chip"><img src="logos/sri-sai.png" alt="Sri Sai Convention Hall"></div>
+        <div class="trust-chip"><img src="logos/community-chulha.png" alt="Community Chulha"></div>
+        <div class="trust-chip"><img src="logos/nakul-associates.png" alt="Nakul Associates"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="sec sec--light">
+  <div class="wrap">
+    <span class="eyebrow">About</span>
+    <p class="about-lead reveal">One team — creators, paid media and CRM follow-up — run as one accountable system, priced on performance instead of padded retainers. No random shout-outs, no vanity reach. Every campaign is tracked against enquiries, orders and revenue.</p>
+
+    <div style="margin-top:64px;">
+      <span class="eyebrow">Investment</span>
+      <h2 class="sec-h2 reveal">A plan in your inbox within 48 hours.</h2>
+    </div>
+    <div class="invest-grid">
+      <div class="invest-card">
+        <span class="invest-tag">Starter · ₹1L–₹5L</span>
+        <div class="invest-band">Starter</div>
+        <div class="invest-desc">A first, focused proof of what creator-led growth does for one category.</div>
+        <ul><li>8–12 nano &amp; micro creators</li><li>Monthly reporting dashboard</li><li>One category focus</li></ul>
+      </div>
+      <div class="invest-card invest-card--featured">
+        <span class="invest-tag">Most booked · ₹5L–₹25L</span>
+        <div class="invest-band">Growth</div>
+        <div class="invest-desc">The system running for most active brands — creators, ads and optimisation together.</div>
+        <ul><li>15–25 creators, nano to mid-tier</li><li>Winning posts promoted as ads</li><li>Bi-weekly optimisation calls</li></ul>
+      </div>
+      <div class="invest-card">
+        <span class="invest-tag">Scaled · ₹25L+</span>
+        <div class="invest-band">Scaled</div>
+        <div class="invest-desc">Celebrity-tier reach and an always-on team for brands scaling across cities.</div>
+        <ul><li>Celebrity &amp; multi-city creators</li><li>Always-on always-live dashboard</li><li>Dedicated account pod</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <span class="eyebrow eyebrow--dark">Have A Campaign In Mind?</span>
+    <h2 class="footer-h">LET'S TALK ON WHATSAPP.</h2>
+    <div class="footer-row">
+      <a class="btn btn-orange" href="https://wa.me/919650618193?text=Hi%2C%20I%20have%20a%20campaign%20in%20mind%20%E2%80%94%20let%27s%20talk." target="_blank" rel="noopener">Let's Talk on WhatsApp <span class="arrow">→</span></a>
+      <div class="footer-contacts">
+        <a href="mailto:growth@brandmarketian.com"><span>Email</span>growth@brandmarketian.com</a>
+        <a href="tel:+919650618193"><span>Phone / WhatsApp</span>+91 96506 18193</a>
+        <a href="https://brandmarketian.com/" target="_blank" rel="noopener"><span>Website</span>brandmarketian.com ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brand Marketian. All rights reserved.</span>
+      <span>Influencer × Performance Marketing Studio, India</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20request%20your%20influencer%2Fcreator%20list.%20Please%20share%20the%20relevant%20creators%20for%20my%20brand." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7A9.87 9.87 0 0 0 12.04 2zm5.82 14.09c-.25.7-1.24 1.3-2.02 1.46-.55.11-1.26.2-3.67-.79-3.08-1.27-5.06-4.4-5.22-4.6-.15-.21-1.24-1.65-1.24-3.15s.78-2.23 1.06-2.53c.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.09.92 2.24.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.07.18-.21.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>
+  <span class="wa-text"><span class="l1">Need creators?</span>Get the list →</span>
+</a>
+
+<script>
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll reveal */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-in'); });
+  }
+
+  /* count-up */
+  function formatNum(v, decimals){
+    if(decimals>0) return v.toFixed(decimals);
+    return Math.round(v).toLocaleString('en-IN');
+  }
+  function runCount(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var decimals = parseInt(el.getAttribute('data-decimals')||'0', 10);
+    var prefix = el.getAttribute('data-prefix')||'';
+    var suffix = el.getAttribute('data-suffix')||'';
+    if(reduceMotion || isNaN(target)){
+      el.textContent = prefix + formatNum(target||0, decimals) + suffix;
+      return;
+    }
+    var start = null, dur = 1400;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min(1, (ts-start)/dur);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = prefix + formatNum(target*eased, decimals) + suffix;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var countEls = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  if('IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ runCount(en.target); cio.unobserve(en.target); }
+      });
+    }, {threshold:.4});
+    countEls.forEach(function(el){ cio.observe(el); });
+  } else {
+    countEls.forEach(runCount);
+  }
+
+  /* line graph draw-on-scroll */
+  var line = document.getElementById('perfLine');
+  if(line){
+    var len = line.getTotalLength();
+    line.style.strokeDasharray = len;
+    line.style.strokeDashoffset = len;
+    if(reduceMotion){ line.style.strokeDashoffset = 0; }
+    else {
+      var lio = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ line.style.strokeDashoffset = 0; lio.unobserve(en.target); }
+        });
+      }, {threshold:.4});
+      lio.observe(line);
+    }
+  }
+
+  /* mouse parallax on floating hero cards */
+  var hero = document.querySelector('.hero');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.float-card'));
+  var fine = window.matchMedia && window.matchMedia('(pointer:fine)').matches;
+  if(hero && cards.length && fine && !reduceMotion){
+    var raf = null, mx = 0, my = 0;
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      mx = ((e.clientX - r.left) / r.width - .5) * 2;
+      my = ((e.clientY - r.top) / r.height - .5) * 2;
+      if(!raf){
+        raf = requestAnimationFrame(function(){
+          cards.forEach(function(c, i){
+            var depth = 6 + (i % 3) * 3;
+            var rot = parseFloat(c.getAttribute('data-rot') || '0');
+            c.style.transform = 'rotate(' + rot + 'deg) translate(' + (mx*depth) + 'px,' + (my*depth) + 'px)';
+          });
+          raf = null;
+        });
+      }
+    });
+  }
+
+  /* orbit: position cards around the ring, pause + enlarge on hover */
+  (function(){
+    var ring = document.getElementById('orbitRing');
+    if(!ring) return;
+    var cards = Array.prototype.slice.call(ring.querySelectorAll('.orbit-card'));
+    var radius = 300;
+    cards.forEach(function(c){
+      var ang = parseFloat(c.style.getPropertyValue('--ang')) || 0;
+      var rad = ang * Math.PI / 180;
+      var x = Math.cos(rad) * radius, y = Math.sin(rad) * radius;
+      c.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    });
+    if(reduceMotion){ ring.classList.add('paused'); return; }
+    cards.forEach(function(c){
+      c.addEventListener('mouseenter', function(){ ring.classList.add('paused'); });
+      c.addEventListener('mouseleave', function(){ ring.classList.remove('paused'); });
+    });
+  })();
+</script>
+
+</body></html>
