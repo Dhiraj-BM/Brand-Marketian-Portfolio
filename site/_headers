@@ -1,0 +1,22 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'
+
+# fingerprinted images never change
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/creators/*
+  Cache-Control: public, max-age=86400
+/logos/*
+  Cache-Control: public, max-age=86400
+
+# crawler files: declare the encoding explicitly
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+/robots.txt
+  Content-Type: text/plain; charset=utf-8

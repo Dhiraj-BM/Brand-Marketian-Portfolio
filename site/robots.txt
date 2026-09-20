@@ -1,0 +1,33 @@
+# robots.txt for portfolio.brandmarketian.com
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI / answer-engine crawlers (matches brandmarketian.com).
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://portfolio.brandmarketian.com/sitemap.xml
