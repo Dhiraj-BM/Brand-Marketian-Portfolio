@@ -7,6 +7,9 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Brand Marketian">
 <meta name="theme-color" content="#0F0D0B">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap">
+<link rel="stylesheet" href="buttons.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Brand Marketian">
 <meta property="og:title" content="Influencer Marketing Portfolio | Brand Marketian">
@@ -82,13 +85,6 @@
   }
   .btn .arrow{transition:transform .2s ease;}
   .btn:hover .arrow{transform:translateX(5px);}
-  .btn-wa{background:#25D366;color:#fff;border:1px solid #25D366;}
-  .btn-wa:hover{background:#1EBE5A;border-color:#1EBE5A;color:#fff;}
-  .btn-mail{background:#EA4335;color:#fff;border:1px solid #EA4335;}
-  .btn-mail:hover{background:#D33426;border-color:#D33426;color:#fff;}
-  .btn svg{width:18px;height:18px;flex:none;}
-  .nav-cta{padding:11px 20px;font-size:13px;text-transform:none;letter-spacing:0;}
-  @media (max-width:760px){.nav-cta{padding:9px 16px;}}
   .btn-orange{background:var(--orange);color:var(--ink);border:1px solid var(--orange);}
   .btn-orange:hover{background:transparent;color:var(--orange);}
   .btn-outline{background:transparent;color:var(--paper);border:1px solid var(--line-dark);}
@@ -377,7 +373,7 @@
       <span>Brand Marketian</span>
     </a>
     <div class="nav-switch" role="navigation" aria-label="Portfolio sections"><a href="index.html">Performance</a><a href="influencer.html" aria-current="page">Influencer</a></div>
-    <a class="btn btn-wa nav-cta" href="https://wa.me/919650618193?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7A9.87 9.87 0 0 0 12.04 2zm5.82 14.09c-.25.7-1.24 1.3-2.02 1.46-.55.11-1.26.2-3.67-.79-3.08-1.27-5.06-4.4-5.22-4.6-.15-.21-1.24-1.65-1.24-3.15s.78-2.23 1.06-2.53c.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.09.92 2.24.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.07.18-.21.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>Let's talk</a>
+    <a class="bm-btn bm-btn--wa bm-btn--sm" href="https://wa.me/919650618193?text=Hi%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7A9.87 9.87 0 0 0 12.04 2zm5.82 14.09c-.25.7-1.24 1.3-2.02 1.46-.55.11-1.26.2-3.67-.79-3.08-1.27-5.06-4.4-5.22-4.6-.15-.21-1.24-1.65-1.24-3.15s.78-2.23 1.06-2.53c.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.09.92 2.24.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.07.18-.21.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>Let's talk</a>
   </div>
 </nav>
 
@@ -391,7 +387,7 @@
     </h1>
     <p class="hero-sub reveal" style="--i:3">Creator campaigns, paid media and growth strategies built to make brands impossible to ignore.</p>
     <div class="hero-actions reveal" style="--i:4">
-      <a class="btn btn-orange" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20request%20your%20influencer%2Fcreator%20list.%20Please%20share%20the%20relevant%20creators%20for%20my%20brand." target="_blank" rel="noopener">Request Influencer List <span class="arrow">↗</span></a>
+      <a class="bm-btn bm-btn--wa" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20request%20your%20influencer%2Fcreator%20list.%20Please%20share%20the%20relevant%20creators%20for%20my%20brand." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7A9.87 9.87 0 0 0 12.04 2zm5.82 14.09c-.25.7-1.24 1.3-2.02 1.46-.55.11-1.26.2-3.67-.79-3.08-1.27-5.06-4.4-5.22-4.6-.15-.21-1.24-1.65-1.24-3.15s.78-2.23 1.06-2.53c.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.09.92 2.24.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.07.18-.21.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>Request influencer list</a>
       <a class="btn btn-outline" href="#work">View Our Work <span class="arrow">→</span></a>
     </div>
     <p class="hero-note reveal" style="--i:5;margin-top:16px;">2,000+ creator network · Real accounts, real numbers</p>
@@ -434,7 +430,7 @@
     <p class="creator-mq-note">Real posts from creators in our network. Hover to pause.</p>
 
     <div style="margin-top:56px;">
-      <a class="btn btn-outline-ink" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20get%20your%20creator%20list%20on%20WhatsApp%20%E2%80%94%20niche%2C%20city%2C%20followers%20and%20engagement." target="_blank" rel="noopener">Get Creator List on WhatsApp <span class="arrow">→</span></a>
+      <a class="bm-btn bm-btn--wa" href="https://wa.me/919650618193?text=Hi%2C%20I%27d%20like%20to%20get%20your%20creator%20list%20on%20WhatsApp%20%E2%80%94%20niche%2C%20city%2C%20followers%20and%20engagement." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7A9.87 9.87 0 0 0 12.04 2zm5.82 14.09c-.25.7-1.24 1.3-2.02 1.46-.55.11-1.26.2-3.67-.79-3.08-1.27-5.06-4.4-5.22-4.6-.15-.21-1.24-1.65-1.24-3.15s.78-2.23 1.06-2.53c.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.09.92 2.24.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.07.18-.21.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>Get creator list on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -635,7 +631,7 @@
     <span class="eyebrow eyebrow--dark">Have A Campaign In Mind?</span>
     <h2 class="footer-h">LET'S TALK ON WHATSAPP.</h2>
     <div class="footer-row">
-      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-wa" href="https://wa.me/919650618193?text=Hi%2C%20I%20have%20a%20campaign%20in%20mind%20%E2%80%94%20let%27s%20talk." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7A9.87 9.87 0 0 0 12.04 2zm5.82 14.09c-.25.7-1.24 1.3-2.02 1.46-.55.11-1.26.2-3.67-.79-3.08-1.27-5.06-4.4-5.22-4.6-.15-.21-1.24-1.65-1.24-3.15s.78-2.23 1.06-2.53c.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.09.92 2.24.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.07.18-.21.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>Let's Talk on WhatsApp <span class="arrow">→</span></a><a class="btn btn-mail" href="mailto:growth@brandmarketian.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email us</a></div>
+      <div class="bm-btn-row"><a class="bm-btn bm-btn--wa" href="https://wa.me/919650618193?text=Hi%2C%20I%20have%20a%20campaign%20in%20mind%20%E2%80%94%20let%27s%20talk." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7A9.87 9.87 0 0 0 12.04 2zm5.82 14.09c-.25.7-1.24 1.3-2.02 1.46-.55.11-1.26.2-3.67-.79-3.08-1.27-5.06-4.4-5.22-4.6-.15-.21-1.24-1.65-1.24-3.15s.78-2.23 1.06-2.53c.27-.3.6-.37.8-.37h.57c.18 0 .43-.07.67.51.25.6.85 2.09.92 2.24.07.15.12.32.02.53-.1.21-.15.34-.3.52-.15.18-.31.4-.44.53-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.07.18-.21.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.72.81 2.02.96.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>Let's talk on WhatsApp</a><a class="bm-btn bm-btn--mail" href="mailto:growth@brandmarketian.com" aria-label="Email growth@brandmarketian.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email us</a></div>
       <div class="footer-contacts">
         <a href="mailto:growth@brandmarketian.com"><span>Email</span>growth@brandmarketian.com</a>
         <a href="tel:+919650618193"><span>Phone / WhatsApp</span>+91 96506 18193</a>

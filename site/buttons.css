@@ -1,0 +1,14 @@
+/* Universal contact buttons: one component used on every page of the portfolio. */
+.bm-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;min-height:52px;padding:14px 28px;border-radius:999px;border:2px solid rgba(255,255,255,.92);font-family:"Inter","Instrument Sans","Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:16px;line-height:1;letter-spacing:0;text-transform:none;text-decoration:none;white-space:nowrap;color:#fff;cursor:pointer;box-shadow:0 12px 26px -14px rgba(0,0,0,.6);transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease}
+.bm-btn svg{width:20px;height:20px;flex:none}
+.bm-btn:hover,.bm-btn:focus-visible{color:#fff;transform:translateY(-2px);box-shadow:0 18px 30px -14px rgba(0,0,0,.65)}
+.bm-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.bm-btn--wa{background:#25D366}
+.bm-btn--wa:hover{background:#1EBE5A}
+.bm-btn--mail{background:#EA4335}
+.bm-btn--mail:hover{background:#D33426}
+.bm-btn--sm{min-height:44px;padding:10px 20px;font-size:15px;border-width:2px}
+.bm-btn--sm svg{width:18px;height:18px}
+.bm-btn-row{display:flex;flex-wrap:wrap;gap:14px}
+@media (max-width:560px){.bm-btn-row .bm-btn{flex:1 1 100%}}
+@media (prefers-reduced-motion:reduce){.bm-btn{transition:none}.bm-btn:hover{transform:none}}
