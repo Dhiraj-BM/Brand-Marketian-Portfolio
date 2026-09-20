@@ -61,6 +61,8 @@ p{margin:0}button{font-family:inherit;cursor:pointer}
 .lift{transition:transform .25s ease, border-color .25s ease}.lift:hover{transform:translateY(-6px);border-color:#FF6600}
 .dot{animation:pulse 1.6s ease-in-out infinite}
 @media (prefers-reduced-motion: reduce){.mq-l,.mq-r,.mq-u,.mq-d,.dot{animation:none}}
+/* overflow:hidden on the page wrapper stops the sticky nav; clip keeps the same look without breaking it */
+div[style*="min-width: 1200px"]{overflow:clip!important}
 @media (max-width:820px){
 div[style*="min-width: 1200px"]{min-width:0!important}
 [style*="padding: 0 40px"]{padding-left:20px!important;padding-right:20px!important}
